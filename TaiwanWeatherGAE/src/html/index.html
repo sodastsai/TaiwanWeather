@@ -1,0 +1,41 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>NTU-TAIWAN-WEATHER Doc</title>
+    <link href='http://fonts.googleapis.com/css?family=Cabin:regular,bold' rel='stylesheet' type='text/css'>
+    <link href="css/index.css" rel='stylesheet' type='text/css'>
+    <script src="js/jquery-1.5.min.js" type="text/javascript"></script>
+</head>
+<body>
+	<header>
+		<div id="pageTitle">ntu-taiwan-weather docs</div>
+		<div id="version">version 0.9</div>
+		<div class="clear"></div>
+	</header>
+	<div class="sectionTitle">Request Path</div>
+	<table>
+		<tr><td style="width: 40%; height: 0;"></td><td style="width: 60%;"></td></tr>
+		<tr class="tableHead"><td>Path</td><td>Result</td></tr>
+		<tr class="tableSeperation"><td colspan="2">Following are Tool APIs.</td></tr>
+		<!-- <tr class="tableContent">
+			<td>/tool/memcache?flush=true</td>
+			<td>Flush memcache</td>
+		</tr> -->
+	</table>
+	<div class="sectionTitle">Error Code Index</div>
+	<table>
+		<tr><td style="width: 15; height: 0;"></td><td style="width: 85%;"></td></tr>
+		<tr class="tableHead"><td>Error Code</td><td>Main Reason</td></tr>
+		{% for item in errorDict|dictsort:"code" %}
+			<tr class="tableContent {% if item.code|divisibleby:"10" %} errorTypeSection {% endif %}">
+				<td>{{ item.code }}</td><td>{{ item.msg }}</td>
+			</tr>
+		{% endfor %}
+	</table>
+	<footer>Copyright &copy; 2011 <a href="http://www.ntumobile.org/" target="_blank">NTU CSIE Mobile & HCI Research Lab</a></footer>
+<script type="text/javascript">
+$("tr.tableContent:odd").addClass("odd");
+</script>
+</body>
+</html>

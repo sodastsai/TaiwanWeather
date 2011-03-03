@@ -4,5 +4,15 @@ runtime: python
 api_version: 1
 
 handlers:
+
+- url: /css
+  static_dir: css
+  
+- url: /image
+  static_dir: image
+  
+- url: /js
+  static_dir: js
+
 - url: /.*
-  script: helloworld.py
+  script: MainHandler.py
