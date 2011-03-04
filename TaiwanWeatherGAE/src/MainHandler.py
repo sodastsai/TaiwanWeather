@@ -29,8 +29,9 @@ application = webapp.WSGIApplication([('/', DocumentHandler),
 ## Error code dictionary
 # This dictionary records all error code in this web service api
 errorDict = {
+             100: "Google App Engine Error.",
              
-             200: "Service Not Found"
+             200: "Service Not Found."
              }
 
 ##
