@@ -14,5 +14,11 @@ handlers:
 - url: /js
   static_dir: js
 
-- url: /.*
+- url: /tool/(memcache)
   script: MainHandler.py
+  
+- url: /
+  script: MainHandler.py
+  
+- url: /.*
+  script: NotFoundHandler.py

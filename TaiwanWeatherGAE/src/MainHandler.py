@@ -1,7 +1,11 @@
 from google.appengine.ext import webapp
 from google.appengine.ext.webapp import template
 from google.appengine.ext.webapp.util import run_wsgi_app
+from django.utils import simplejson as json
+
 import os
+
+from MemcacheHandler import MemcacheHandler
 
 ## This webapp handler will process document for this webservice api
 class DocumentHandler(webapp.RequestHandler):
@@ -16,13 +20,17 @@ class DocumentHandler(webapp.RequestHandler):
         self.response.out.write(template.render(indexPath, templateDict))
 
 ## WebApp object
-application = webapp.WSGIApplication([('/', DocumentHandler)
+application = webapp.WSGIApplication([('/', DocumentHandler),
+                                      
+                                      ('/tool/memcache', MemcacheHandler)
                                       ],
                                      debug=True)
 
 ## Error code dictionary
 # This dictionary records all error code in this web service api
-errorDict = {100: "XD"
+errorDict = {
+             
+             200: "Service Not Found"
              }
 
 ##
@@ -36,7 +44,8 @@ errorDict = {100: "XD"
 # - A json string which represent a dict with error code and reason.
 #
 def errorMsg(errorCode, reason=""):
-    pass
+    result = {"error":int(errorCode), "reason": (errorDict[errorCode]+" "+reason).strip()}
+    return json.dumps(result, sort_keys=True)
 
 ##
 # Main function for speedup with memcache
