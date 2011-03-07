@@ -10,6 +10,7 @@ using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Shapes;
 using Microsoft.Phone.Controls;
+using Microsoft.Phone.Tasks;
 
 namespace TaiwanWeather.Views {
     public partial class AboutUs : PhoneApplicationPage {
@@ -18,6 +19,12 @@ namespace TaiwanWeather.Views {
         }
 
         private void PhoneApplicationPage_Loaded(object sender, RoutedEventArgs e) {
+        }
+
+        private void LabWebSite_Click(object sender, RoutedEventArgs e) {
+            WebBrowserTask labWeb = new WebBrowserTask();
+            labWeb.URL = "http://www.ntumobile.org/";
+            labWeb.Show();
         }
     }
 }
