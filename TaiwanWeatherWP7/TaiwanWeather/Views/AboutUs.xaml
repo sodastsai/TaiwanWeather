@@ -24,12 +24,16 @@
         <StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="12,17,0,28">
             <TextBlock x:Name="ApplicationTitle" Text="{StaticResource ApplicationName_Title}" Style="{StaticResource PhoneTextNormalStyle}"/>
             <TextBlock x:Name="PageTitle" Text="about us" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
-        </StackPanel>
+        </StackPanel> 
 
         <!--ContentPanel - place additional content here-->
         <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
-            <TextBlock x:Name="AboutInfo" FontSize="25.333" Margin="9,-6,0,6" Foreground="Silver">NTU Mobile &#38; HCI Research Lab</TextBlock>
-            <Button Content="visit website" Height="72" HorizontalAlignment="Left" Margin="0,29,0,0" Name="LabWebsite" VerticalAlignment="Top" Width="226" Click="LabWebSite_Click" />
+            <TextBlock x:Name="AboutInfo" FontSize="25.333" Margin="9,-6,0,6" Foreground="LightGray">NTU Mobile &#38; HCI Research Lab</TextBlock>
+            <TextBlock x:Name="AboutDetail" FontSize="20" Foreground="Silver" Margin="9,29,6,457" TextWrapping="Wrap">Mobile &#38; HCI Research Lab<LineBreak />
+                Computer Science and Information Engeenering<LineBreak />
+                National Taiwan University
+            </TextBlock>
+            <Button Content="visit website" Height="72" HorizontalAlignment="Left" Margin="0,114,0,0" Name="LabWebsite" VerticalAlignment="Top" Width="226" Click="LabWebSite_Click" />
         </Grid>
     </Grid>
  </phone:PhoneApplicationPage>
