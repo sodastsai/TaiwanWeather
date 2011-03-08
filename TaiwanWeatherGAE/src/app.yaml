@@ -21,6 +21,11 @@ handlers:
   script: parser/ForecastCityListHandler.py
 - url: /json/forecastCity/pageURL/.*/
   script: parser/ForecastCityListHandler.py
+
+- url: /json/forecast/
+  script: parser/ForecastHandler.py  
+- url: /json/forecast/.*/
+  script: parser/ForecastHandler.py
   
 - url: /
   script: MainHandler.py

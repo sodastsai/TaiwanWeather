@@ -1,3 +1,4 @@
+# coding=utf8
 """Beautiful Soup
 Elixir and Tonic
 "The Screen-Scraper's Friend"

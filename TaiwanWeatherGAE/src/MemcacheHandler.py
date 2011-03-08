@@ -1,3 +1,4 @@
+# coding=utf8
 from google.appengine.ext import webapp
 from google.appengine.api import memcache
 import MainHandler
