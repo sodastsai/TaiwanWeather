@@ -17,6 +17,11 @@ handlers:
 - url: /tool/(memcache)
   script: MainHandler.py
   
+- url: /json/forecastCity/
+  script: parser/ForecastCityListHandler.py
+- url: /json/forecastCity/pageURL/.*/
+  script: parser/ForecastCityListHandler.py
+  
 - url: /
   script: MainHandler.py
   
