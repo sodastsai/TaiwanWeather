@@ -7,7 +7,7 @@ from django.utils import simplejson as json
 
 from BeautifulSoup import BeautifulSoup
 
-from Constants import urlByCityName, errorMsg
+from Constants import urlByCityName, errorMsg, cityList
 
 ##
 # This class will return all forecast data from cwb.gov.tw
@@ -15,7 +15,11 @@ from Constants import urlByCityName, errorMsg
 #    - #TODO:
 class AllForecastHandler(webapp.RequestHandler):
     def get(self):
-        self.response.out.write(self.request.path.split('/'))
+        resultDict = {}
+        for item in cityList:
+            tmpResult = forecastDataByCity(item[1], useJSON=False)
+            resultDict[item[1]] = tmpResult
+        self.response.out.write(json.dumps(resultDict))
 
 ##
 # This class will return particular city weather info
@@ -29,7 +33,7 @@ class ForecastHandler(webapp.RequestHandler):
         self.response.out.write(forecastDataByCity(cityName))
 
 ## Get city forecast data
-def forecastDataByCity(cityName, useMemcache=True):
+def forecastDataByCity(cityName, useMemcache=True, useJSON=True):
     
     memcacheKey = cityName
     memcacheNamespace = "Forecast"
@@ -37,7 +41,10 @@ def forecastDataByCity(cityName, useMemcache=True):
     if useMemcache:
         result = memcache.get(memcacheKey, namespace=memcacheNamespace) #@UndefinedVariable
         if result is not None:
-            return result
+            if useJSON:
+                return json.dumps(result)
+            else:
+                return result
     
     # Find city URL
     cityURL = urlByCityName(cityName)
@@ -60,6 +67,7 @@ def forecastDataByCity(cityName, useMemcache=True):
     soup.head.extract()
     contentTableRows = soup.body.table.table.contents[1].find("div", attrs={'class':'box'}).table.findAll("tr")[1:]
     soup.html.extract()
+    # Save to dict/list
     for item in contentTableRows:
         tmpDict = {}
         rowCells = item.findAll("td")
@@ -67,9 +75,13 @@ def forecastDataByCity(cityName, useMemcache=True):
         tmpDict["description"] = unicode(rowCells[2].contents[0])
         tmpDict["rainProbability"] = unicode(rowCells[3].contents[0])
         resultList += [tmpDict]
-    result = json.dumps(resultList)
-    memcache.set(memcacheKey, result, 21600, namespace=memcacheNamespace) #@UndefinedVariable
-    return result
+    # Memcache
+    memcache.set(memcacheKey, resultList, 21600, namespace=memcacheNamespace) #@UndefinedVariable
+    
+    if useJSON:
+        return json.dumps(resultList)
+    else:
+        return resultList
 
 ## WebApp object
 application = webapp.WSGIApplication([('/json/forecast/', AllForecastHandler), ('/json/forecast/.*/', ForecastHandler)], debug=True)
