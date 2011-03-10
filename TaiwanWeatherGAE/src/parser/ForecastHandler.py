@@ -76,7 +76,7 @@ def forecastDataByCity(cityName, useMemcache=True, useJSON=True):
     # Make a soup and fetch necessary information
     soup = BeautifulSoup(fetchResult.content)
     soup.head.extract()
-    contentTableRows = soup.body.table.table.contents[1].find("div", attrs={'class':'box'}).table.findAll("tr")[1:]
+    contentTableRows = soup.body.table.table.contents[1].findAll("div", attrs={'class':'box'})[0].table.findAll("tr")[1:]
     soup.html.extract()
     # Save to dict/list
     for item in contentTableRows:
