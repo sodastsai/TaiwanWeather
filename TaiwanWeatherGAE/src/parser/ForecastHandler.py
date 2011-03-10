@@ -12,7 +12,7 @@ from Constants import urlByCityName, errorMsg, cityList
 ##
 # This class will return all forecast data from cwb.gov.tw
 # Return:
-#    - #TODO:
+#    - JSON object with each cities forecast
 class AllForecastHandler(webapp.RequestHandler):
     def get(self):
         resultDict = {}
