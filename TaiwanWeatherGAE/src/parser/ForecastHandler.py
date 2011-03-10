@@ -1,7 +1,7 @@
 # coding=utf8
 from google.appengine.ext import webapp
 from google.appengine.ext.webapp.util import run_wsgi_app
-from google.appengine.api import urlfetch
+from google.appengine.api import urlfetch, memcache
 from google.appengine.api.urlfetch_errors import DownloadError
 from django.utils import simplejson as json
 
@@ -26,36 +26,50 @@ class ForecastHandler(webapp.RequestHandler):
     def get(self):
         # Get city name from REST path
         cityName = self.request.path[1:-1].split('/')[2]
-        # Find city URL
-        cityURL = urlByCityName(cityName)
-        if cityURL is None:
-            self.response.out.write(errorMsg(201, "City is not found."))
-        # Start to fetch cwb for city list
-        fetchResult = None
-        try:
-            fetchResult = urlfetch.fetch(cityURL)
-        except DownloadError:
-            self.response.out.write(errorMsg(101, "Fetching city list is timeout!"))
+        self.response.out.write(forecastDataByCity(cityName))
+
+## Get city forecast data
+def forecastDataByCity(cityName, useMemcache=True):
+    
+    memcacheKey = cityName
+    memcacheNamespace = "Forecast"
+    # Get From memcache
+    if useMemcache:
+        result = memcache.get(memcacheKey, namespace=memcacheNamespace) #@UndefinedVariable
+        if result is not None:
+            return result
+    
+    # Find city URL
+    cityURL = urlByCityName(cityName)
+    if cityURL is None:
+        return errorMsg(201, "City is not found.")
+    # Start to fetch cwb for city list
+    fetchResult = None
+    try:
+        fetchResult = urlfetch.fetch(cityURL)
+    except DownloadError:
+        return errorMsg(101, "Fetching city list is timeout!")
+    
+    # Check for result
+    if fetchResult is None or fetchResult.status_code!=200:
+        return errorMsg(300, "Fetching city list is failed!")
         
-        # Check for result
-        if fetchResult is None or fetchResult.status_code!=200:
-            self.response.out.write(errorMsg(300, "Fetching city list is failed!"))
-            return
-            
-        resultList = []
-        # Make a soup and fetch necessary information
-        soup = BeautifulSoup(fetchResult.content)
-        soup.head.extract()
-        contentTableRows = soup.body.table.table.contents[1].find("div", attrs={'class':'box'}).table.findAll("tr")[1:]
-        soup.html.extract()
-        for item in contentTableRows:
-            tmpDict = {}
-            rowCells = item.findAll("td")
-            tmpDict["temperature"] = unicode(rowCells[0].contents[0])
-            tmpDict["description"] = unicode(rowCells[2].contents[0])
-            tmpDict["rainProbability"] = unicode(rowCells[3].contents[0])
-            resultList += [tmpDict]
-        self.response.out.write(json.dumps(resultList))
+    resultList = []
+    # Make a soup and fetch necessary information
+    soup = BeautifulSoup(fetchResult.content)
+    soup.head.extract()
+    contentTableRows = soup.body.table.table.contents[1].find("div", attrs={'class':'box'}).table.findAll("tr")[1:]
+    soup.html.extract()
+    for item in contentTableRows:
+        tmpDict = {}
+        rowCells = item.findAll("td")
+        tmpDict["temperature"] = unicode(rowCells[0].contents[0])
+        tmpDict["description"] = unicode(rowCells[2].contents[0])
+        tmpDict["rainProbability"] = unicode(rowCells[3].contents[0])
+        resultList += [tmpDict]
+    result = json.dumps(resultList)
+    memcache.set(memcacheKey, result, 21600, namespace=memcacheNamespace) #@UndefinedVariable
+    return result
 
 ## WebApp object
 application = webapp.WSGIApplication([('/json/forecast/', AllForecastHandler), ('/json/forecast/.*/', ForecastHandler)], debug=True)
