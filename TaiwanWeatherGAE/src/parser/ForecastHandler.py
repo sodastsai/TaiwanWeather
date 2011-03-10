@@ -9,16 +9,28 @@ from BeautifulSoup import BeautifulSoup
 
 from Constants import urlByCityName, errorMsg, cityList
 
+## Memcache namespace
+memcacheNamespace = "Forecast"
+
 ##
 # This class will return all forecast data from cwb.gov.tw
 # Return:
 #    - JSON object with each cities forecast
 class AllForecastHandler(webapp.RequestHandler):
     def get(self):
+        memcacheKey = "AllCity"
+        result = memcache.get(memcacheKey, namespace=memcacheNamespace) #@UndefinedVariable
+        if result is not None:
+            self.response.out.write(json.dumps(result))
+            return
+                        
         resultDict = {}
         for item in cityList:
             tmpResult = forecastDataByCity(item[1], useJSON=False)
             resultDict[item[1]] = tmpResult
+        
+        # Memcache
+        memcache.set(memcacheKey, resultDict, 21600, namespace=memcacheNamespace) #@UndefinedVariable
         self.response.out.write(json.dumps(resultDict))
 
 ##
@@ -36,7 +48,6 @@ class ForecastHandler(webapp.RequestHandler):
 def forecastDataByCity(cityName, useMemcache=True, useJSON=True):
     
     memcacheKey = cityName
-    memcacheNamespace = "Forecast"
     # Get From memcache
     if useMemcache:
         result = memcache.get(memcacheKey, namespace=memcacheNamespace) #@UndefinedVariable
