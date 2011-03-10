@@ -37,7 +37,8 @@ class PageURLHandler(webapp.RequestHandler):
         self.response.out.write(json.dumps(result))
 
 ## WebApp object
-application = webapp.WSGIApplication([('/json/forecastCity/', CityListHandler), ('/json/forecastCity/pageURL/.*/', PageURLHandler)],
+application = webapp.WSGIApplication([('/json/forecastCity/', CityListHandler),
+                                      ('/json/forecastCity/pageURL/.*/', PageURLHandler)],
                                      debug=True)
 
 ##
