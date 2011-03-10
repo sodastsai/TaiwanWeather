@@ -4,31 +4,37 @@ runtime: python
 api_version: 1
 
 handlers:
-
+# CSS
 - url: /css
   static_dir: css
-  
+# Image
 - url: /image
   static_dir: image
-  
+# Javascript
 - url: /js
   static_dir: js
-
+# Tools
 - url: /tool/(memcache)
   script: MainHandler.py
-  
+
+# JSON - Forecast City List
 - url: /json/forecastCity/
   script: parser/ForecastCityListHandler.py
+# JSON - Forecast city page URL
 - url: /json/forecastCity/pageURL/.*/
   script: parser/ForecastCityListHandler.py
 
+# JSON - All Forecast
 - url: /json/forecast/
-  script: parser/ForecastHandler.py  
+  script: parser/ForecastHandler.py
+# JSON - City Forecast  
 - url: /json/forecast/.*/
   script: parser/ForecastHandler.py
   
+# Document Root
 - url: /
   script: MainHandler.py
-  
+
+# Not found
 - url: /.*
   script: NotFoundHandler.py
