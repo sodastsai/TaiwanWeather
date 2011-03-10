@@ -22,14 +22,14 @@ class PageURLHandler(webapp.RequestHandler):
         cityName = self.request.path[27:-1]
         # Empty City Name
         if cityName=="":
-            self.response.out.write(errorMsg(201, "City abbr is required."))
+            self.response.out.write(errorMsg(201, "City is required."))
             return
         
         # Find city link
         cityLink = urlByCityName(cityName)
         # Could not find city ...
         if cityLink is None:
-            self.response.out.write(errorMsg(201, "City abbr is not found."))
+            self.response.out.write(errorMsg(201, "City is not found."))
             return
         
         # Return a city
