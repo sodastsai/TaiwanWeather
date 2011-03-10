@@ -1,7 +1,7 @@
 # coding=utf8
 from google.appengine.ext import webapp
 from google.appengine.api import memcache
-import MainHandler
+from Constants import errorMsg
 
 ## web app for memcache 
 class MemcacheHandler(webapp.RequestHandler):
@@ -11,4 +11,4 @@ class MemcacheHandler(webapp.RequestHandler):
             if memcache.flush_all(): #@UndefinedVariable
                 self.response.out.write("{\"result\": 0, \"message\": \"All memcache has been flushed.\"}")
             else:
-                self.response.out.write(MainHandler.errorMsg(100, "Memcache opration failed"))
+                self.response.out.write(errorMsg(100, "Memcache opration failed"))
