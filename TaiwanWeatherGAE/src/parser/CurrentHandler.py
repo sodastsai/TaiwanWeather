@@ -20,14 +20,19 @@ memcacheNamespace = "current"
 # This class will return all current forecast info
 class AllCurrentHandler(webapp.RequestHandler):
     def get(self):
+        useMemcache = True
+        if self.request.get("memcache")=="false":
+            useMemcache = False
+        
         memcacheKey = "AllCity"
-        result = memcache.get(memcacheKey, namespace=memcacheNamespace) #@UndefinedVariable
-        if result is not None:
-            self.response.out.write(json.dumps(result))
+        if useMemcache:
+            result = memcache.get(memcacheKey, namespace=memcacheNamespace) #@UndefinedVariable
+            if result is not None:
+                self.response.out.write(json.dumps(result))
             
         resultDict = {}
         for item in cityList:
-            resultDict[item[0]] = currentDataOfCity(item[1], useJSON=False)
+            resultDict[item[0]] = currentDataOfCity(item[1], useJSON=False, useMemcache=useMemcache)
         memcache.set(memcacheKey, resultDict, 3600, namespace=memcacheNamespace) #@UndefinedVariable
         self.response.out.write(json.dumps(resultDict))
 

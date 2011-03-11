@@ -22,15 +22,20 @@ memcacheNamespace = "Forecast"
 #    - JSON object with each cities forecast
 class AllForecastHandler(webapp.RequestHandler):
     def get(self):
+        useMemcache = True
+        if self.request.get("memcache")=="false":
+            useMemcache = False
+        
         memcacheKey = "AllCity"
-        result = memcache.get(memcacheKey, namespace=memcacheNamespace) #@UndefinedVariable
-        if result is not None:
-            self.response.out.write(json.dumps(result))
-            return
-                        
+        if useMemcache:
+            result = memcache.get(memcacheKey, namespace=memcacheNamespace) #@UndefinedVariable
+            if result is not None:
+                self.response.out.write(json.dumps(result))
+                return
+        
         resultDict = {}
         for item in cityList:
-            tmpResult = forecastDataByCity(item[1], useJSON=False)
+            tmpResult = forecastDataByCity(item[1], useJSON=False, useMemcache=useMemcache)
             resultDict[item[1]] = tmpResult
         
         # Memcache
