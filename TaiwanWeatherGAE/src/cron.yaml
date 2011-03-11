@@ -13,6 +13,10 @@ cron:
   url: /json/forecast/?memcache=false
   schedule: every day 22:32
   timezone: Asia/Taipei
+- description: Update forecast data
+  url: /json/forecast/?memcache=false
+  schedule: every day 04:32
+  timezone: Asia/Taipei
   
 # Update current data
 - description: Update current data
