@@ -1,0 +1,21 @@
+cron:
+
+# Update forecast data
+- description: Update forecast data
+  url: /json/forecast/?memcache=false
+  schedule: every day 10:32
+  timezone: Asia/Taipei
+- description: Update forecast data
+  url: /json/forecast/?memcache=false
+  schedule: every day 16:32
+  timezone: Asia/Taipei
+- description: Update forecast data
+  url: /json/forecast/?memcache=false
+  schedule: every day 22:32
+  timezone: Asia/Taipei
+  
+# Update current data
+- description: Update current data
+  url: /json/current/?memcache=false
+  schedule: every 1 hours
+  timezone: Asia/Taipei
