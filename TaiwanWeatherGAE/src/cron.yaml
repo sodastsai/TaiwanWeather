@@ -5,9 +5,25 @@ cron:
   url: /tool/memcache?flush=true
   schedule: every day 10:30
   timezone: Asia/Taipei
+- description: Flush memcache / Afternoon
+  url: /tool/memcache?flush=true
+  schedule: every day 16:30
+  timezone: Asia/Taipei
+- description: Flush memcache / Night
+  url: /tool/memcache?flush=true
+  schedule: every day 10:30
+  timezone: Asia/Taipei
 
 # Update forecast data
 - description: Update forecast data / Morning
   url: /json/forecast/
   schedule: every day 10:32
+  timezone: Asia/Taipei
+- description: Update forecast data / Afternoon
+  url: /json/forecast/
+  schedule: every day 16:32
+  timezone: Asia/Taipei
+- description: Update forecast data / Night
+  url: /json/forecast/
+  schedule: every day 22:32
   timezone: Asia/Taipei
