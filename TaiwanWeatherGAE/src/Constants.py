@@ -76,7 +76,10 @@ def urlByCityName(cityName):
 #    - json array with city name and url
 class CityHandler(webapp.RequestHandler):
     def get(self):
-        self.response.out.write(json.dumps(cityList, sort_keys=True))
+        resultList = []
+        for item in cityList:
+            resultList += [{"name": item[0], "enName": item[1]}]
+        self.response.out.write(json.dumps(resultList, sort_keys=True))
 
 ## WebApp object
 application = webapp.WSGIApplication([('/json/city/', CityHandler)], debug=True)
