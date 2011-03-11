@@ -1,0 +1,9 @@
+#Fri Mar 11 19:15:41 CST 2011
+eclipse.preferences.version=1
+encoding//src/BeautifulSoup.py=utf8
+encoding//src/Constants.py=utf8
+encoding//src/MainHandler.py=utf8
+encoding//src/MemcacheHandler.py=utf8
+encoding//src/NotFoundHandler.py=utf8
+encoding//src/parser/CurrentHandler.py=utf8
+encoding//src/parser/ForecastHandler.py=utf8
