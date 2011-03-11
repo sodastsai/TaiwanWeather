@@ -18,11 +18,8 @@ handlers:
   script: MainHandler.py
 
 # JSON - Forecast City List
-- url: /json/forecastCity/
-  script: parser/ForecastCityListHandler.py
-# JSON - Forecast city page URL
-- url: /json/forecastCity/pageURL/.*/
-  script: parser/ForecastCityListHandler.py
+- url: /json/city/
+  script: Constants.py
 
 # JSON - All Forecast
 - url: /json/forecast/

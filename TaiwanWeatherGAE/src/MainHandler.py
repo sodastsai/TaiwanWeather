@@ -10,8 +10,7 @@ from google.appengine.ext.webapp.util import run_wsgi_app
 import os
 
 from MemcacheHandler import MemcacheHandler
-from parser import ForecastCityListHandler
-from Constants import errorDict
+from Constants import errorDict, cityList
 
 ## This webapp handler will process document for this webservice api
 class DocumentHandler(webapp.RequestHandler):
@@ -21,7 +20,7 @@ class DocumentHandler(webapp.RequestHandler):
         for item in errorDict:
             errorList += [{"code":item , "msg":errorDict[item]}]
         # Make Django render html and output
-        templateDict = { "errorDict": errorList, "cityList": ForecastCityListHandler.cityList }
+        templateDict = { "errorDict": errorList, "cityList": cityList }
         indexPath = os.path.join(os.path.dirname(__file__), "html/index.html")
         self.response.out.write(template.render(indexPath, templateDict))
 

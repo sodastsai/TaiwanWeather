@@ -3,6 +3,8 @@
 from google.appengine.dist import use_library
 use_library('django', '1.2')
 
+from google.appengine.ext import webapp
+from google.appengine.ext.webapp.util import run_wsgi_app
 from django.utils import simplejson as json
 
 ## Error code dictionary
@@ -67,3 +69,21 @@ def urlByCityName(cityName):
             cityLink = cityPair[2]
             break
     return cityLink
+
+##
+# This class will return city forecast available from cwb.gov.tw
+# Return:
+#    - json array with city name and url
+class CityHandler(webapp.RequestHandler):
+    def get(self):
+        self.response.out.write(json.dumps(cityList, sort_keys=True))
+
+## WebApp object
+application = webapp.WSGIApplication([('/json/city/', CityHandler)], debug=True)
+
+## Main function for speedup with memcache
+def main():
+    run_wsgi_app(application)
+
+if __name__ == "__main__":
+    main()
