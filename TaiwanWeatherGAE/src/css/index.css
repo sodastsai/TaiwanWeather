@@ -84,7 +84,7 @@ footer {
 	padding: 2px 5px;
 }
 .tableContent.odd td { background: #EEE; }
-.tableContent.errorTypeSection td { border-top: 2px solid #999; }
+.tableContent.tableSection td { border-top: 2px solid #999; }
 
 .alert {
 	color: #900;

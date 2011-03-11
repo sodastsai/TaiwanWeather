@@ -34,6 +34,10 @@
 			<td>/json/forecast/[city name]/</td>
 			<td>Get city's full forecast data. [city name] is list below.</td>
 		</tr>
+		<tr class="tableContent tableSection">
+			<td>/json/current/</td>
+			<td>Get all current city weather.</td>
+		</tr>
 		<tr class="tableSeperation"><td colspan="2">Following are Tool APIs.</td></tr>
 		<tr class="tableContent">
 			<td>/tool/memcache?flush=true</td>
@@ -45,7 +49,7 @@
 		<tr><td style="width: 15%; height: 0;"></td><td style="width: 85%;"></td></tr>
 		<tr class="tableHead"><td>Error Code</td><td>Main Reason</td></tr>
 		{% for item in errorDict|dictsort:"code" %}
-			<tr class="tableContent {% if item.code|divisibleby:"10" %} errorTypeSection {% endif %}">
+			<tr class="tableContent {% if item.code|divisibleby:"10" %} tableSection {% endif %}">
 				<td>{{ item.code }}</td><td>{{ item.msg }}</td>
 			</tr>
 		{% endfor %}
@@ -62,7 +66,7 @@
 	</table>
 	<footer>Copyright &copy; 2011 <a href="http://www.ntumobile.org/" target="_blank">NTU CSIE Mobile & HCI Research Lab</a></footer>
 <script type="text/javascript">
-$("tr.tableContent:odd").addClass("odd");
+	$("tr.tableContent:odd").addClass("odd");
 </script>
 </body>
 </html>
