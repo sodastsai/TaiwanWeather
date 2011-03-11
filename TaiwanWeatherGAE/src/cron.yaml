@@ -1,0 +1,13 @@
+cron:
+
+# Flush memcahce
+- description: Flush memcache / Morning
+  url: /tool/memcache?flush=true
+  schedule: every day 10:30
+  timezone: Asia/Taipei
+
+# Update forecast data
+- description: Update forecast data / Morning
+  url: /json/forecast/
+  schedule: every day 10:32
+  timezone: Asia/Taipei
