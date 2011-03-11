@@ -31,6 +31,10 @@ handlers:
 - url: /json/forecast/.*/
   script: parser/ForecastHandler.py
   
+# JSON - City Current
+- url: /json/current/
+  script: parser/CurrentHandler.py
+  
 # Document Root
 - url: /
   script: MainHandler.py
