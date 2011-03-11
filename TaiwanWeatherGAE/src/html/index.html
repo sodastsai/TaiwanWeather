@@ -17,25 +17,56 @@
 	<table>
 		<tr><td style="width: 40%; height: 0;"></td><td style="width: 60%;"></td></tr>
 		<tr class="tableHead"><td>Path</td><td>Result</td></tr>
+		<tr class="tableSeperation"><td colspan="2">Following are JSON REST APIs.</td></tr>
+		<tr class="tableContent">
+			<td>/json/city/</td>
+			<td>Get all city list</td>
+		</tr>
+		<tr class="tableContent tableSection">
+			<td>/json/forecast/</td>
+			<td>Get all city forecast data (Recent part only)</td>
+		</tr>
+		<tr class="tableContent">
+			<td>/json/forecast/[city name]/</td>
+			<td>Get city's full forecast data. [city name] is list below.</td>
+		</tr>
+		<tr class="tableContent tableSection">
+			<td>/json/current/</td>
+			<td>Get all current city weather.</td>
+		</tr>
+		<tr class="tableContent">
+			<td>/json/current/[city name]/</td>
+			<td>Get city current weather. [city name] is list below.</td>
+		</tr>
 		<tr class="tableSeperation"><td colspan="2">Following are Tool APIs.</td></tr>
-		<!-- <tr class="tableContent">
+		<tr class="tableContent">
 			<td>/tool/memcache?flush=true</td>
 			<td>Flush memcache</td>
-		</tr> -->
+		</tr>
 	</table>
 	<div class="sectionTitle">Error Code Index</div>
 	<table>
-		<tr><td style="width: 15; height: 0;"></td><td style="width: 85%;"></td></tr>
+		<tr><td style="width: 15%; height: 0;"></td><td style="width: 85%;"></td></tr>
 		<tr class="tableHead"><td>Error Code</td><td>Main Reason</td></tr>
 		{% for item in errorDict|dictsort:"code" %}
-			<tr class="tableContent {% if item.code|divisibleby:"10" %} errorTypeSection {% endif %}">
+			<tr class="tableContent {% if item.code|divisibleby:"10" %} tableSection {% endif %}">
 				<td>{{ item.code }}</td><td>{{ item.msg }}</td>
+			</tr>
+		{% endfor %}
+	</table>
+	<div class="sectionTitle">City Name</div>
+	<table>
+		<tr><td style="width: 25%; height: 0;"></td><td style="width: 75%;"></td></tr>
+		<tr class="tableHead"><td>Chinese City Name</td><td>English City Name</td></tr>
+		{% for item in cityList %}
+			<tr class="tableContent">
+				<td>{{ item.0 }}</td><td>{{ item.1}}</td>
 			</tr>
 		{% endfor %}
 	</table>
 	<footer>Copyright &copy; 2011 <a href="http://www.ntumobile.org/" target="_blank">NTU CSIE Mobile & HCI Research Lab</a></footer>
 <script type="text/javascript">
-$("tr.tableContent:odd").addClass("odd");
+	$("tr.tableContent:odd").addClass("odd");
 </script>
 </body>
 </html>
