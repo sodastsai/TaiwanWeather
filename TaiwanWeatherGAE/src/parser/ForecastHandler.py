@@ -106,6 +106,7 @@ def forecastDataByCity(cityName, recentOnly=True, useMemcache=True, useJSON=True
         rowCells = item.findAll("td")
         tmpDict = {"temperature": unicode(rowCells[0].contents[0]),
                    "description": unicode(rowCells[1].img["alt"]),
+                   "image": unicode("http://www.cwb.gov.tw"+rowCells[1].img["src"]),
                    "feel": unicode(rowCells[2].contents[0]),
                    "rainProbability": unicode(rowCells[3].contents[0])}
         recentList += [tmpDict]
@@ -115,6 +116,7 @@ def forecastDataByCity(cityName, recentOnly=True, useMemcache=True, useJSON=True
         weekList = []
         for item in weekTableRow.findAll("td"):
             tmpDict = {"description": unicode(item.contents[1]["alt"]),
+                       "image": unicode("http://www.cwb.gov.tw"+item.contents[1]["src"]),
                        "temperature": unicode(item.contents[3].strip())}
             weekList += [tmpDict]
         resultDict["week"] = weekList
@@ -127,6 +129,7 @@ def forecastDataByCity(cityName, recentOnly=True, useMemcache=True, useJSON=True
             tmpList = []
             for cell in item.findAll("td"):
                 subDict = {"description": unicode(cell.contents[1]["alt"]),
+                           "image": unicode("http://www.cwb.gov.tw"+cell.contents[1]["src"]),
                            "temperature": unicode(cell.contents[3].strip())}
                 tmpList += [subDict]
             tmpDict["forecast"] = tmpList

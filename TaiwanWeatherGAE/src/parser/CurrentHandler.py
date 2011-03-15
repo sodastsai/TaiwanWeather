@@ -90,6 +90,7 @@ def currentDataOfCity(cityName, useJSON=True, useMemcache=True):
     resultDict = {
                "city": chtCityName,
                "description": unicode(currentInfos[tablePosition].findAll("tr")[2].td.img["alt"].strip()),
+               "image": unicode("http://www.cwb.gov.tw"+currentInfos[tablePosition].findAll("tr")[2].td.img["src"].strip()),
                "temperature": unicode(currentInfos[tablePosition].findAll("tr")[3].td.contents[0].strip()),
                }
     
