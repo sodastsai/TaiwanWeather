@@ -33,7 +33,7 @@ class AllCurrentHandler(webapp.RequestHandler):
         resultDict = {}
         for item in cityList:
             resultDict[item[0]] = currentDataOfCity(item[1], useJSON=False, useMemcache=useMemcache)
-        memcache.set(memcacheKey, resultDict, 3600, namespace=memcacheNamespace) #@UndefinedVariable
+        memcache.set(memcacheKey, resultDict, 4200, namespace=memcacheNamespace) #@UndefinedVariable
         self.response.out.write(json.dumps(resultDict))
 
 ##
@@ -86,7 +86,6 @@ def currentDataOfCity(cityName, useJSON=True, useMemcache=True):
     soup.extract()
     
     # Process information
-    #cityName = unicode(currentInfos[tablePosition].findAll("tr")[0].th.contents[0].strip())
     resultDict = {
                "city": chtCityName,
                "description": unicode(currentInfos[tablePosition].findAll("tr")[2].td.img["alt"].strip()),
@@ -95,7 +94,7 @@ def currentDataOfCity(cityName, useJSON=True, useMemcache=True):
                }
     
     # Return
-    memcache.set(memcacheKey, resultDict, 3600, namespace=memcacheNamespace) #@UndefinedVariable
+    memcache.set(memcacheKey, resultDict, 4200, namespace=memcacheNamespace) #@UndefinedVariable
     if useJSON:
         return json.dumps(resultDict)
     else:

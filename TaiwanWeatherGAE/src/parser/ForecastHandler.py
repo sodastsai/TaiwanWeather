@@ -39,7 +39,7 @@ class AllForecastHandler(webapp.RequestHandler):
             resultDict[item[1]] = tmpResult
         
         # Memcache
-        memcache.set(memcacheKey, resultDict, 21600, namespace=memcacheNamespace) #@UndefinedVariable
+        memcache.set(memcacheKey, resultDict, 22200, namespace=memcacheNamespace) #@UndefinedVariable
         self.response.out.write(json.dumps(resultDict))
 
 ##
@@ -136,7 +136,7 @@ def forecastDataByCity(cityName, recentOnly=True, useMemcache=True, useJSON=True
             touristsList += [tmpDict]
         resultDict["tourist"] = touristsList
     # Memcache
-    memcache.set(memcacheKey, resultDict, 21600, namespace=memcacheNamespace) #@UndefinedVariable
+    memcache.set(memcacheKey, resultDict, 22200, namespace=memcacheNamespace) #@UndefinedVariable
     
     if useJSON:
         return json.dumps(resultDict)
