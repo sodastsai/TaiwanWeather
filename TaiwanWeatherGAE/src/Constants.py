@@ -77,10 +77,22 @@ def urlByCityName(cityName):
 #    - json array with city name and url
 class CityHandler(webapp.RequestHandler):
     def get(self):
+        # Header
+        self.response.headers["Content-Type"] = "text/javascript"
+        callback = None
+        if self.request.get("callback")!="":
+            callback = self.request.get("callback")
+        
         resultList = []
         for item in cityList:
             resultList += [{"name": item[0], "enName": item[1]}]
-        self.response.out.write(json.dumps(resultList, sort_keys=True))
+            
+        jsonObject = json.dumps(resultList, sort_keys=True)
+        if callback is not None:
+            result = callback + "(" + jsonObject + ");"
+        else:
+            result = jsonObject
+        self.response.out.write(result)
 
 ## WebApp object
 application = webapp.WSGIApplication([('/json/city/', CityHandler)], debug=True)
