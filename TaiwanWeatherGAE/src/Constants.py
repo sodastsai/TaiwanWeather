@@ -15,6 +15,7 @@ errorDict = {
              
              200: "Service Not Found.",
              201: "REST path is error.",
+             202: "GET argument is error.",
              
              300: "Fetch result is empty.",
              }

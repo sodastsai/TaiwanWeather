@@ -14,7 +14,7 @@ handlers:
 - url: /js
   static_dir: js
 # Tools
-- url: /tool/(memcache)
+- url: /tool/(memcache/)
   script: MainHandler.py
 
 # JSON - Forecast City List
@@ -36,7 +36,7 @@ handlers:
   script: parser/CurrentHandler.py
   
 # Document Root
-- url: /
+- url: /(|example/)
   script: MainHandler.py
 
 # Not found

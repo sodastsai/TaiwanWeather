@@ -33,12 +33,14 @@ header {
 	background: #369;
 	color: #FFF;
 	padding: 0 15px;
+	margin-bottom: 15px;
 }
 #pageTitle {
 	float: left;
 	font-size: 1.5em;
 	font-weight: bold;
 }
+#pageTitle a { color: #FFF; text-decoration: none; }
 #version {
 	float: right;
 	font-style: italic;
@@ -57,9 +59,11 @@ footer {
 .sectionTitle {
 	font-size: 1.2em;
 	font-weight: 900;
-	margin-top: 40px;
+	margin-top: 30px;
 }
-
+table.section {
+	margin-bottom: 50px;
+}
 .tableHead td {
 	height: 40px;
 	line-height: 40px;
@@ -90,3 +94,14 @@ footer {
 	color: #900;
 	font-style: italic;
 }
+
+button {
+	padding: 5px 15px;
+	border: 0;
+	border-radius: 10px;
+	background: #369;
+	color: #FFF;
+	font-size: .8em;
+	cursor: pointer;
+}
+button.hover { background: #F90; }
