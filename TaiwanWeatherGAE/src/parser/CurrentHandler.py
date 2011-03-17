@@ -20,30 +20,51 @@ memcacheNamespace = "current"
 # This class will return all current forecast info
 class AllCurrentHandler(webapp.RequestHandler):
     def get(self):
+        # Header
         self.response.headers["Content-Type"] = "text/javascript"
+        callback = None
+        if self.request.get("callback")!="":
+            callback = self.request.get("callback")
+            
         useMemcache = True
         if self.request.get("memcache")=="false":
             useMemcache = False
         
         memcacheKey = "AllCity"
+        result = None
         if useMemcache:
             result = memcache.get(memcacheKey, namespace=memcacheNamespace) #@UndefinedVariable
-            if result is not None:
-                self.response.out.write(json.dumps(result))
             
-        resultDict = {}
-        for item in cityList:
-            resultDict[item[1]] = currentDataOfCity(item[1], useJSON=False, useMemcache=useMemcache)
-        memcache.set(memcacheKey, resultDict, 4200, namespace=memcacheNamespace) #@UndefinedVariable
-        self.response.out.write(json.dumps(resultDict))
+        if result is None:
+            result = {}
+            for item in cityList:
+                result[item[1]] = currentDataOfCity(item[1], useJSON=False, useMemcache=useMemcache)
+            memcache.set(memcacheKey, result, 4200, namespace=memcacheNamespace) #@UndefinedVariable
+            
+        if callback is not None:
+            resultString = callback+"("+json.dumps(result)+");"
+        else:
+            resultString = json.dumps(result)
+        self.response.out.write(resultString)
 
 ##
 # This class will return city current forecast info
 class CurrentHandler(webapp.RequestHandler):
     def get(self):
+        # Header
         self.response.headers["Content-Type"] = "text/javascript"
+        callback = None
+        if self.request.get("callback")!="":
+            callback = self.request.get("callback")
+        # Data
         cityName = self.request.path[1:-1].split('/')[2]
-        self.response.out.write(currentDataOfCity(cityName))
+        # Output
+        jsonObject = currentDataOfCity(cityName)
+        if callback is not None:
+            result = callback+"("+jsonObject+");"
+        else:
+            result = jsonObject
+        self.response.out.write(result)
             
 ## Get current data of city
 def currentDataOfCity(cityName, useJSON=True, useMemcache=True):
