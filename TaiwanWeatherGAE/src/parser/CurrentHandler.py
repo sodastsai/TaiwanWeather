@@ -20,6 +20,7 @@ memcacheNamespace = "current"
 # This class will return all current forecast info
 class AllCurrentHandler(webapp.RequestHandler):
     def get(self):
+        self.response.headers["Content-Type"] = "text/javascript"
         useMemcache = True
         if self.request.get("memcache")=="false":
             useMemcache = False
@@ -40,6 +41,7 @@ class AllCurrentHandler(webapp.RequestHandler):
 # This class will return city current forecast info
 class CurrentHandler(webapp.RequestHandler):
     def get(self):
+        self.response.headers["Content-Type"] = "text/javascript"
         cityName = self.request.path[1:-1].split('/')[2]
         self.response.out.write(currentDataOfCity(cityName))
             

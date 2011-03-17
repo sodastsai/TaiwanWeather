@@ -22,6 +22,7 @@ memcacheNamespace = "Forecast"
 #    - JSON object with each cities forecast
 class AllForecastHandler(webapp.RequestHandler):
     def get(self):
+        self.response.headers["Content-Type"] = "text/javascript"
         useMemcache = True
         if self.request.get("memcache")=="false":
             useMemcache = False
@@ -49,6 +50,7 @@ class AllForecastHandler(webapp.RequestHandler):
 #    The data contains next 3 periods of forecast
 class ForecastHandler(webapp.RequestHandler):
     def get(self):
+        self.response.headers["Content-Type"] = "text/javascript"
         # Get city name from REST path
         cityName = self.request.path[1:-1].split('/')[2]
         self.response.out.write(forecastDataByCity(cityName, recentOnly=False))
