@@ -2,3 +2,6 @@ This is a project about local weather information in Taiwan.
 
 Currently, we'll use Google App Engine to get data from some website.
 And use Windows Phone 7 as first release client.
+
+You can find reference of json api in
+http://ntu-taiwan-weather.appspot.com/
