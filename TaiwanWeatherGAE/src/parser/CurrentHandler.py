@@ -1,4 +1,19 @@
 # coding=utf8
+#
+#   Copyright 2011 NTU CSIE Mobile & HCI Research Lab
+#
+#   Licensed under the Apache License, Version 2.0 (the "License");
+#   you may not use this file except in compliance with the License.
+#   You may obtain a copy of the License at
+#
+#       http://www.apache.org/licenses/LICENSE-2.0
+#
+#   Unless required by applicable law or agreed to in writing, software
+#   distributed under the License is distributed on an "AS IS" BASIS,
+#   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+#   See the License for the specific language governing permissions and
+#   limitations under the License.
+#
 # Django 1.2
 from google.appengine.dist import use_library
 use_library('django', '1.2')
@@ -20,28 +35,51 @@ memcacheNamespace = "current"
 # This class will return all current forecast info
 class AllCurrentHandler(webapp.RequestHandler):
     def get(self):
+        # Header
+        self.response.headers["Content-Type"] = "text/javascript"
+        callback = None
+        if self.request.get("callback")!="":
+            callback = self.request.get("callback")
+            
         useMemcache = True
         if self.request.get("memcache")=="false":
             useMemcache = False
         
         memcacheKey = "AllCity"
+        result = None
         if useMemcache:
             result = memcache.get(memcacheKey, namespace=memcacheNamespace) #@UndefinedVariable
-            if result is not None:
-                self.response.out.write(json.dumps(result))
             
-        resultDict = {}
-        for item in cityList:
-            resultDict[item[0]] = currentDataOfCity(item[1], useJSON=False, useMemcache=useMemcache)
-        memcache.set(memcacheKey, resultDict, 3600, namespace=memcacheNamespace) #@UndefinedVariable
-        self.response.out.write(json.dumps(resultDict))
+        if result is None:
+            result = {}
+            for item in cityList:
+                result[item[1]] = currentDataOfCity(item[1], useJSON=False, useMemcache=useMemcache)
+            memcache.set(memcacheKey, result, 4200, namespace=memcacheNamespace) #@UndefinedVariable
+            
+        if callback is not None:
+            resultString = callback+"("+json.dumps(result)+");"
+        else:
+            resultString = json.dumps(result)
+        self.response.out.write(resultString)
 
 ##
 # This class will return city current forecast info
 class CurrentHandler(webapp.RequestHandler):
     def get(self):
+        # Header
+        self.response.headers["Content-Type"] = "text/javascript"
+        callback = None
+        if self.request.get("callback")!="":
+            callback = self.request.get("callback")
+        # Data
         cityName = self.request.path[1:-1].split('/')[2]
-        self.response.out.write(currentDataOfCity(cityName))
+        # Output
+        jsonObject = currentDataOfCity(cityName)
+        if callback is not None:
+            result = callback+"("+jsonObject+");"
+        else:
+            result = jsonObject
+        self.response.out.write(result)
             
 ## Get current data of city
 def currentDataOfCity(cityName, useJSON=True, useMemcache=True):
@@ -86,16 +124,15 @@ def currentDataOfCity(cityName, useJSON=True, useMemcache=True):
     soup.extract()
     
     # Process information
-    #cityName = unicode(currentInfos[tablePosition].findAll("tr")[0].th.contents[0].strip())
     resultDict = {
                "city": chtCityName,
                "description": unicode(currentInfos[tablePosition].findAll("tr")[2].td.img["alt"].strip()),
                "image": unicode("http://www.cwb.gov.tw"+currentInfos[tablePosition].findAll("tr")[2].td.img["src"].strip()),
-               "temperature": unicode(currentInfos[tablePosition].findAll("tr")[3].td.contents[0].strip()),
+               "temperature": unicode(currentInfos[tablePosition].findAll("tr")[3].td.contents[0][:-6].strip()),
                }
     
     # Return
-    memcache.set(memcacheKey, resultDict, 3600, namespace=memcacheNamespace) #@UndefinedVariable
+    memcache.set(memcacheKey, resultDict, 4200, namespace=memcacheNamespace) #@UndefinedVariable
     if useJSON:
         return json.dumps(resultDict)
     else:

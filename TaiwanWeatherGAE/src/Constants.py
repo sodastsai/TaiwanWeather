@@ -1,4 +1,19 @@
 # coding=utf8
+#
+#   Copyright 2011 NTU CSIE Mobile & HCI Research Lab
+#
+#   Licensed under the Apache License, Version 2.0 (the "License");
+#   you may not use this file except in compliance with the License.
+#   You may obtain a copy of the License at
+#
+#       http://www.apache.org/licenses/LICENSE-2.0
+#
+#   Unless required by applicable law or agreed to in writing, software
+#   distributed under the License is distributed on an "AS IS" BASIS,
+#   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+#   See the License for the specific language governing permissions and
+#   limitations under the License.
+#
 # Django 1.2
 from google.appengine.dist import use_library
 use_library('django', '1.2')
@@ -15,6 +30,7 @@ errorDict = {
              
              200: "Service Not Found.",
              201: "REST path is error.",
+             202: "GET argument is error.",
              
              300: "Fetch result is empty.",
              }
@@ -76,10 +92,22 @@ def urlByCityName(cityName):
 #    - json array with city name and url
 class CityHandler(webapp.RequestHandler):
     def get(self):
+        # Header
+        self.response.headers["Content-Type"] = "text/javascript"
+        callback = None
+        if self.request.get("callback")!="":
+            callback = self.request.get("callback")
+        
         resultList = []
         for item in cityList:
             resultList += [{"name": item[0], "enName": item[1]}]
-        self.response.out.write(json.dumps(resultList, sort_keys=True))
+            
+        jsonObject = json.dumps(resultList, sort_keys=True)
+        if callback is not None:
+            result = callback + "(" + jsonObject + ");"
+        else:
+            result = jsonObject
+        self.response.out.write(result)
 
 ## WebApp object
 application = webapp.WSGIApplication([('/json/city/', CityHandler)], debug=True)
