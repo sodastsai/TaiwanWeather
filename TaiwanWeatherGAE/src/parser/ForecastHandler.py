@@ -160,7 +160,7 @@ def forecastDataByCity(cityName, recentOnly=True, useMemcache=True, useJSON=True
         tourists = touristTableRows.table.findAll("tr")[1:]
         touristsList = []
         for item in tourists:
-            tmpDict = {"name": unicode(item.find("th"))}
+            tmpDict = {"name": unicode(item.find("th").contents[0])}
             tmpList = []
             for cell in item.findAll("td"):
                 subDict = {"description": unicode(cell.contents[1]["alt"]),
