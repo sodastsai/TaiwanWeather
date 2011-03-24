@@ -11,20 +11,10 @@ using System.Windows.Media.Animation;
 using System.Windows.Shapes;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Tasks;
-using System.Runtime.Serialization.Json;
-using System.IO;
 using System.Text;
 
 namespace TaiwanWeatherWP7 {
-    // City list object
-    public class City {
-        public string name {set; get;}
-        public string enName {set; get;}
-    }
-
     public partial class MainPage : PhoneApplicationPage {
-        // Data source
-        List<City> cityLists;
 
         // Constructor
         public MainPage() {
@@ -42,7 +32,7 @@ namespace TaiwanWeatherWP7 {
                 return;
 
             // Navigate to the new page
-            NavigationService.Navigate(new Uri("/DetailsPage.xaml?selectedItem=" + CityListBox.SelectedIndex, UriKind.Relative));
+            //NavigationService.Navigate(new Uri("/DetailsPage.xaml?selectedItem=" + CityListBox.SelectedIndex, UriKind.Relative));
 
             // Reset selected index to -1 (no selection)
             CityListBox.SelectedIndex = -1;
@@ -52,24 +42,6 @@ namespace TaiwanWeatherWP7 {
         private void MainPage_Loaded(object sender, RoutedEventArgs e) {
             if (!App.ViewModel.IsDataLoaded) {
                 App.ViewModel.LoadData();
-
-                // Get a web client to fetch string from Network
-                var webClient = new WebClient();
-                webClient.OpenReadAsync(new Uri("http://ntu-taiwan-weather.appspot.com/json/city/"));
-                webClient.OpenReadCompleted += new OpenReadCompletedEventHandler(webClientCompletedRead); // Completed Method
-            }
-        }
-
-        void webClientCompletedRead(object sender, OpenReadCompletedEventArgs e) {
-            using (var reader = new StreamReader(e.Result)) {
-                // Get string
-                string result = reader.ReadToEnd();
-                // Convert from JSON to Object
-                MemoryStream jsonStream = new MemoryStream(Encoding.Unicode.GetBytes(result));
-                DataContractJsonSerializer serializer = new DataContractJsonSerializer(typeof(List<City>));
-                cityLists = (List<City>)serializer.ReadObject(jsonStream);
-                // Make it to city list box
-                CityListBox.ItemsSource = cityLists;
             }
         }
 

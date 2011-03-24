@@ -7,7 +7,6 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
     mc:Ignorable="d" d:DesignWidth="480" d:DesignHeight="696" 
-    d:DataContext="{d:DesignData SampleData/MainViewModelSampleData.xaml}"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
@@ -29,11 +28,11 @@
 
         <!--ContentPanel contains ListBox and ListBox ItemTemplate. Place additional content here-->
         <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
-            <ListBox x:Name="CityListBox" Margin="0,0,-12,0" SelectionChanged="CityListBox_SelectionChanged">
+            <ListBox x:Name="CityListBox" Margin="0,0,-12,0" ItemsSource="{Binding CityLists}" SelectionChanged="CityListBox_SelectionChanged">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                       <StackPanel Margin="0,0,0,17" Width="432">
-                          <TextBlock Text="{Binding name}" TextWrapping="Wrap" Style="{StaticResource PhoneTextExtraLargeStyle}"/>
+                          <TextBlock Text="{Binding cityName}" TextWrapping="Wrap" Style="{StaticResource PhoneTextExtraLargeStyle}"/>
                           <!--<TextBlock Text="{Binding LineTwo}" TextWrapping="Wrap" Margin="12,-6,12,0" Style="{StaticResource PhoneTextSubtleStyle}"/>-->
                       </StackPanel>
                     </DataTemplate>
