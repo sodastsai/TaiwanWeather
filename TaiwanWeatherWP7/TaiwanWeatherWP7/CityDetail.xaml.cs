@@ -11,9 +11,16 @@ using System.Windows.Media.Animation;
 using System.Windows.Shapes;
 using Microsoft.Phone.Controls;
 using System.Windows.Navigation;
+using System.IO;
+using System.Text;
+using System.Runtime.Serialization.Json;
 
 namespace TaiwanWeatherWP7 {
     public partial class CityDetail : PhoneApplicationPage {
+        // Weather Data
+        ForecastInformation forecastData;
+        CurrentInformation currentData;
+
         public CityDetail() {
             InitializeComponent();
         }
@@ -27,10 +34,35 @@ namespace TaiwanWeatherWP7 {
             string cityEnName = "";
             if (NavigationContext.QueryString.TryGetValue("cityEnName", out cityEnName)) {
                 String currentURL = "http://ntu-taiwan-weather.appspot.com/json/current/" + cityEnName + "/";
+                WebClient currentWebClient = new WebClient();
+                currentWebClient.OpenReadAsync(new Uri(currentURL));
+                currentWebClient.OpenReadCompleted += new OpenReadCompletedEventHandler(currentCompletedRead);
+
                 String forecastURL = "http://ntu-taiwan-weather.appspot.com/json/forecast/" + cityEnName + "/";
-                System.Diagnostics.Debug.WriteLine(currentURL);
-                System.Diagnostics.Debug.WriteLine(forecastURL);
+                WebClient forecastWebClient = new WebClient();
+                forecastWebClient.OpenReadAsync(new Uri(forecastURL));
+                forecastWebClient.OpenReadCompleted += new OpenReadCompletedEventHandler(forecastCompletedRead);
             }
+        }
+
+        private void forecastCompletedRead(object sender, OpenReadCompletedEventArgs e) {
+            // Get String
+            StreamReader reader = new StreamReader(e.Result);
+            String result = reader.ReadToEnd();
+            // Get json
+            MemoryStream jsonStream = new MemoryStream(Encoding.Unicode.GetBytes(result));
+            DataContractJsonSerializer serializer = new DataContractJsonSerializer(typeof(ForecastInformation));
+            forecastData = serializer.ReadObject(jsonStream) as ForecastInformation;
+        }
+
+        private void currentCompletedRead(object sender, OpenReadCompletedEventArgs e) {
+            // Get String
+            StreamReader reader = new StreamReader(e.Result);
+            String result = reader.ReadToEnd();
+            // Get json
+            MemoryStream jsonStream = new MemoryStream(Encoding.Unicode.GetBytes(result));
+            DataContractJsonSerializer serializer = new DataContractJsonSerializer(typeof(CurrentInformation));
+            currentData = serializer.ReadObject(jsonStream) as CurrentInformation;
         }
     }
 }
