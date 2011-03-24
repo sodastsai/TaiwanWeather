@@ -10,6 +10,7 @@ using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Shapes;
 using Microsoft.Phone.Controls;
+using Microsoft.Phone.Tasks;
 
 namespace TaiwanWeather {
     public partial class MainPage : PhoneApplicationPage {
@@ -28,5 +29,17 @@ namespace TaiwanWeather {
                 App.ViewModel.LoadData();
             }
         }
+
+        // Call IE to show cwb.gov.tw
+        private void CWB_Pressed(object sender, EventArgs e) {
+            WebBrowserTask cwbWeb = new WebBrowserTask();
+            cwbWeb.URL = "http://www.cwb.gov.tw/";
+            cwbWeb.Show();
+        }
+
+        private void AboutUs_Pressed(object sender, EventArgs e) {
+            NavigationService.Navigate(new Uri("/Views/AboutUs.xaml", UriKind.Relative));
+        }
+
     }
 }

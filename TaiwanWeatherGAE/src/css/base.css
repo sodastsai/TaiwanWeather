@@ -1,3 +1,18 @@
+/*
+ *   Copyright 2011 NTU CSIE Mobile & HCI Research Lab
+ *
+ *   Licensed under the Apache License, Version 2.0 (the "License");
+ *   you may not use this file except in compliance with the License.
+ *   You may obtain a copy of the License at
+ *
+ *       http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *   Unless required by applicable law or agreed to in writing, software
+ *   distributed under the License is distributed on an "AS IS" BASIS,
+ *   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *   See the License for the specific language governing permissions and
+ *   limitations under the License.
+ */
 @charset "UTF-8";
 /* CSS Document */
 
@@ -33,12 +48,14 @@ header {
 	background: #369;
 	color: #FFF;
 	padding: 0 15px;
+	margin-bottom: 15px;
 }
 #pageTitle {
 	float: left;
 	font-size: 1.5em;
 	font-weight: bold;
 }
+#pageTitle a { color: #FFF; text-decoration: none; }
 #version {
 	float: right;
 	font-style: italic;
@@ -57,9 +74,11 @@ footer {
 .sectionTitle {
 	font-size: 1.2em;
 	font-weight: 900;
-	margin-top: 40px;
+	margin-top: 30px;
 }
-
+table.section {
+	margin-bottom: 50px;
+}
 .tableHead td {
 	height: 40px;
 	line-height: 40px;
@@ -84,9 +103,20 @@ footer {
 	padding: 2px 5px;
 }
 .tableContent.odd td { background: #EEE; }
-.tableContent.errorTypeSection td { border-top: 2px solid #999; }
+.tableContent.tableSection td { border-top: 2px solid #999; }
 
 .alert {
 	color: #900;
 	font-style: italic;
 }
+
+button {
+	padding: 5px 15px;
+	border: 0;
+	border-radius: 10px;
+	background: #369;
+	color: #FFF;
+	font-size: .8em;
+	cursor: pointer;
+}
+button.hover { background: #F90; }
