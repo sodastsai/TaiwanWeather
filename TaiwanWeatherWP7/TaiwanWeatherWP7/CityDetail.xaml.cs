@@ -33,12 +33,12 @@ namespace TaiwanWeatherWP7 {
 
             string cityEnName = "";
             if (NavigationContext.QueryString.TryGetValue("cityEnName", out cityEnName)) {
-                String currentURL = "http://ntu-taiwan-weather.appspot.com/json/current/" + cityEnName + "/";
+                String currentURL = App.GAEBaseURL + "current/" + cityEnName + "/";
                 WebClient currentWebClient = new WebClient();
                 currentWebClient.OpenReadAsync(new Uri(currentURL));
                 currentWebClient.OpenReadCompleted += new OpenReadCompletedEventHandler(currentCompletedRead);
 
-                String forecastURL = "http://ntu-taiwan-weather.appspot.com/json/forecast/" + cityEnName + "/";
+                String forecastURL = App.GAEBaseURL + "forecast/" + cityEnName + "/";
                 WebClient forecastWebClient = new WebClient();
                 forecastWebClient.OpenReadAsync(new Uri(forecastURL));
                 forecastWebClient.OpenReadCompleted += new OpenReadCompletedEventHandler(forecastCompletedRead);

@@ -42,7 +42,7 @@ namespace TaiwanWeatherWP7 {
         public void LoadData() {
             // Get a web client to fetch string from Network
             var webClient = new WebClient();
-            webClient.OpenReadAsync(new Uri("http://ntu-taiwan-weather.appspot.com/json/city/"));
+            webClient.OpenReadAsync(new Uri(App.GAEBaseURL + "city/"));
             webClient.OpenReadCompleted += new OpenReadCompletedEventHandler(webClientCompletedRead); // Completed Method
         }
 
