@@ -9,7 +9,7 @@
     <!--Application Resources-->
     <Application.Resources>
         <!-- Common Constant String -->
-        <clr:String x:Key="ApplicationName_Title">TAIWAN WEATHER</clr:String>
+        <clr:String x:Key="ApplicationName_Title">台灣天氣</clr:String>
     </Application.Resources>
 
     <Application.ApplicationLifetimeObjects>
