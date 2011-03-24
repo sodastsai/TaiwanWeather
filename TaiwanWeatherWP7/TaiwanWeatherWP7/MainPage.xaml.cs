@@ -1,4 +1,4 @@
-﻿using System;
+﻿    using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -10,6 +10,7 @@ using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Shapes;
 using Microsoft.Phone.Controls;
+using Microsoft.Phone.Tasks;
 
 namespace TaiwanWeatherWP7 {
     public partial class MainPage : PhoneApplicationPage {
@@ -40,6 +41,18 @@ namespace TaiwanWeatherWP7 {
             if (!App.ViewModel.IsDataLoaded) {
                 App.ViewModel.LoadData();
             }
+        }
+
+        // Call IE to show cwb.gov.tw
+        private void CWB_Pressed(object sender, EventArgs e) {
+            WebBrowserTask cwbWeb = new WebBrowserTask();
+            cwbWeb.URL = "http://www.cwb.gov.tw/";
+               cwbWeb.Show();
+        }
+
+        // Show lab's page
+        private void AboutUs_Pressed(object sender, EventArgs e) {
+            NavigationService.Navigate(new Uri("/Views/AboutUs.xaml", UriKind.Relative));
         }
     }
 }
