@@ -14,6 +14,8 @@ using System.Windows.Navigation;
 using System.IO;
 using System.Text;
 using System.Runtime.Serialization.Json;
+using System.Windows.Media.Imaging;
+using ImageTools.IO.Gif;
 
 namespace TaiwanWeatherWP7 {
     public partial class CityDetail : PhoneApplicationPage {
@@ -27,11 +29,11 @@ namespace TaiwanWeatherWP7 {
 
         // When page is navigated to set data context to selected item in list
         protected override void OnNavigatedTo(NavigationEventArgs e) {
-            string cityName = "";
+            String cityName = "";
             if (NavigationContext.QueryString.TryGetValue("cityName", out cityName))
                 PageTitle.Text = cityName;
 
-            string cityEnName = "";
+            String cityEnName = "";
             if (NavigationContext.QueryString.TryGetValue("cityEnName", out cityEnName)) {
                 String currentURL = App.GAEBaseURL + "current/" + cityEnName + "/";
                 WebClient currentWebClient = new WebClient();
@@ -53,6 +55,12 @@ namespace TaiwanWeatherWP7 {
             MemoryStream jsonStream = new MemoryStream(Encoding.Unicode.GetBytes(result));
             DataContractJsonSerializer serializer = new DataContractJsonSerializer(typeof(ForecastInformation));
             forecastData = serializer.ReadObject(jsonStream) as ForecastInformation;
+
+            //Uri uri = new Uri("http://www.cwb.gov.tw/V6/symbol/symbol01.gif");
+            ImageTools.IO.Decoders.AddDecoder<GifDecoder>();
+            ImageTools.ExtendedImage imgt = new ImageTools.ExtendedImage();
+            imgt.UriSource = new Uri("http://www.cwb.gov.tw/V6/symbol/symbol01.gif", UriKind.RelativeOrAbsolute);
+            ViewImg.Source = imgt;
         }
 
         private void currentCompletedRead(object sender, OpenReadCompletedEventArgs e) {
@@ -63,6 +71,7 @@ namespace TaiwanWeatherWP7 {
             MemoryStream jsonStream = new MemoryStream(Encoding.Unicode.GetBytes(result));
             DataContractJsonSerializer serializer = new DataContractJsonSerializer(typeof(CurrentInformation));
             currentData = serializer.ReadObject(jsonStream) as CurrentInformation;
+            CurrentPanel.DataContext = currentData;
         }
     }
 }

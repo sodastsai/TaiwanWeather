@@ -1,11 +1,13 @@
-﻿<phone:PhoneApplicationPage 
-    x:Class="TaiwanWeatherWP7.CityDetail"
+﻿<phone:PhoneApplicationPage
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
     xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:gif="clr-namespace:ImageTools.Controls;assembly=ImageTools.Controls"
+    xmlns:local="clr-namespace:TaiwanWeatherWP7" 
+    x:Class="TaiwanWeatherWP7.CityDetail"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
@@ -13,21 +15,45 @@
     mc:Ignorable="d" d:DesignHeight="768" d:DesignWidth="480"
     shell:SystemTray.IsVisible="True">
 
+    <phone:PhoneApplicationPage.Resources>
+		<local:ForecastInformation x:Key="ForecastInformationDataSource" d:IsDataSource="True"/>
+		<local:CurrentInformation x:Key="CurrentInformationDataSource" d:IsDataSource="True"/>
+	</phone:PhoneApplicationPage.Resources>
+
     <!--LayoutRoot is the root grid where all page content is placed-->
     <Grid x:Name="LayoutRoot" Background="Transparent">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="0*"/>
+        </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition/>
         </Grid.RowDefinitions>
 
         <!--TitlePanel contains the name of the application and page title-->
-        <StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="12,17,0,28">
-            <TextBlock x:Name="ApplicationTitle" Text="{StaticResource ApplicationName_Title}" Style="{StaticResource PhoneTextNormalStyle}"/>
-            <TextBlock x:Name="PageTitle" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
-        </StackPanel>
+        <StackPanel x:Name="TitlePanel" Margin="12,17,0,28" d:LayoutOverrides="GridBox">
+    		<TextBlock x:Name="ApplicationTitle" Text="{StaticResource ApplicationName_Title}" Style="{StaticResource PhoneTextNormalStyle}"/>
+    		<TextBlock x:Name="PageTitle" Text="taipei city" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
+    	</StackPanel>
 
         <!--ContentPanel - place additional content here-->
-        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0"></Grid>
+        <Grid x:Name="CurrentPanel" Margin="12,18,12,528" Grid.Row="1">
+            <gif:AnimatedImage Name="ViewImg" Margin="136,17,288,13" Width="32" Height="26" RenderTransformOrigin="-2.281,-3.846" d:LayoutOverrides="VerticalAlignment"/>
+        	<TextBlock x:Name="CurrentDescription" Height="40" Margin="0,8,8,0" TextWrapping="Wrap" VerticalAlignment="Top" Text="{Binding description}" FontSize="26.667" HorizontalAlignment="Right" Width="174"/>
+        	<TextBlock x:Name="CurrentTemperature" Height="40" Margin="191,8,196,0" TextWrapping="Wrap" Text="{Binding temperature}" VerticalAlignment="Top" FontSize="26.667"/>
+        	<TextBlock HorizontalAlignment="Left" Margin="8,8,0,0" TextWrapping="Wrap" Text="現在天氣" Width="110" Height="40" VerticalAlignment="Top" RenderTransformOrigin="0.404,-2.433" FontSize="26.667"/>
+        </Grid>
+
+        <Grid x:Name="ForecastPanel" Margin="18,0,6,0" Height="233" VerticalAlignment="Bottom" Grid.Row="1">
+            <Grid.ColumnDefinitions>
+            	<ColumnDefinition Width="34*" />
+            	<ColumnDefinition Width="150*" />
+            	<ColumnDefinition Width="272*" />
+            </Grid.ColumnDefinitions>
+            <Image HorizontalAlignment="Left" Height="26" Margin="8,8,0,0" VerticalAlignment="Top" Width="32" Grid.ColumnSpan="2" />
+            <TextBlock x:Name="tmp" Height="26" Margin="22,8,8,0" TextWrapping="Wrap" VerticalAlignment="Top" Grid.Column="1" Grid.ColumnSpan="2" />
+        </Grid>
     </Grid>
 
 </phone:PhoneApplicationPage>

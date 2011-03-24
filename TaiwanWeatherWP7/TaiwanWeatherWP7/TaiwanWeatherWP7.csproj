@@ -48,6 +48,15 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="ImageTools">
+      <HintPath>..\..\..\..\..\Downloads\ImageTools 0.30\bin\Phone\ImageTools.dll</HintPath>
+    </Reference>
+    <Reference Include="ImageTools.Controls">
+      <HintPath>..\..\..\..\..\Downloads\ImageTools 0.30\bin\Phone\ImageTools.Controls.dll</HintPath>
+    </Reference>
+    <Reference Include="ImageTools.IO.Gif">
+      <HintPath>..\..\..\..\..\Downloads\ImageTools 0.30\bin\Phone\ImageTools.IO.Gif.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Phone" />
     <Reference Include="Microsoft.Phone.Interop" />
     <Reference Include="System.Servicemodel.Web" />
