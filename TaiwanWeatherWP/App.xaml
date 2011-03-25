@@ -13,6 +13,40 @@
         <clr:String x:Key="CityList">城市列表</clr:String>
         <clr:String x:Key="CWB_Website">中央氣象局網站</clr:String>
         <clr:String x:Key="AboutUs">關於我們</clr:String>
+        <!--Animation-->
+        <Style TargetType="phone:PhoneApplicationFrame" x:Key="CustomFrame">
+            <Setter Property="IsTabStop" Value="False"/>
+            <Setter Property="Foreground" Value="{StaticResource PhoneForegroundBrush}"/>
+            <Setter Property="FontSize" Value="{StaticResource PhoneFontSizeNormal}"/>
+            <Setter Property="FontFamily" Value="{StaticResource PhoneFontFamilyNormal}"/>
+            <Setter Property="HorizontalAlignment" Value="Stretch"/>
+            <Setter Property="VerticalAlignment" Value="Stretch"/>
+            <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+            <Setter Property="VerticalContentAlignment" Value="Stretch"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="BorderBrush" Value="{x:Null}"/>
+            <Setter Property="Padding" Value="0"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="phone:PhoneApplicationFrame">
+                        <Border x:Name="ClientArea" HorizontalAlignment="{TemplateBinding HorizontalAlignment}" VerticalAlignment="{TemplateBinding VerticalAlignment}" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" >
+                            <Grid>
+                                <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Margin="{TemplateBinding Padding}" Content="{TemplateBinding Content}" ContentTemplate="{TemplateBinding ContentTemplate}" />
+                                <!--<ProgressBar Foreground="White" 
+                                             IsIndeterminate="False" 
+                                             Style="{StaticResource PerformanceProgressBar}"
+                                             Margin="0,2,0,0"
+                                             x:Name="LoadingProgressBar"
+                                             Visibility="Collapsed" 
+                                             VerticalAlignment="Top" />-->
+                                <ContentPresenter x:Name="FauxPopup" Visibility="Collapsed" />
+                            </Grid>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>    
     </Application.Resources>
 
     <Application.ApplicationLifetimeObjects>

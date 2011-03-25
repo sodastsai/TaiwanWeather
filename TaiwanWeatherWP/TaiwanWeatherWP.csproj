@@ -49,6 +49,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.Phone" />
+    <Reference Include="Microsoft.Phone.Controls, Version=7.0.0.0, Culture=neutral, PublicKeyToken=24eec0d8c86cda1e, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.Phone.Interop" />
     <Reference Include="System.Servicemodel.Web" />
     <Reference Include="System.Windows" />
@@ -61,12 +62,26 @@
     <Compile Include="AboutUs.xaml.cs">
       <DependentUpon>AboutUs.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Animation\AnimatedBasePage.cs" />
+    <Compile Include="Animation\AnimatorHelperBase.cs" />
+    <Compile Include="Animation\ContinuumAnimator.cs" />
+    <Compile Include="Animation\SlideAnimator.cs" />
+    <Compile Include="Animation\Storyboards.cs" />
+    <Compile Include="Animation\SwivelAnimator.cs" />
+    <Compile Include="Animation\TurnstileAnimator.cs" />
+    <Compile Include="Animation\TurnstileFeatherAnimator.cs" />
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="DetailsPage.xaml.cs">
       <DependentUpon>DetailsPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Extensions\ApplicationExtensions.cs" />
+    <Compile Include="Extensions\CollectionExtensions.cs" />
+    <Compile Include="Extensions\CollectionHelper.cs" />
+    <Compile Include="Extensions\DialogService.cs" />
+    <Compile Include="Extensions\ItemsControlHelper.cs" />
+    <Compile Include="Extensions\VisualTreeExtensions.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>

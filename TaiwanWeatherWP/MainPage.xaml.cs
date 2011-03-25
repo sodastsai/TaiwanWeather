@@ -11,9 +11,10 @@ using System.Windows.Media.Animation;
 using System.Windows.Shapes;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Tasks;
+using Clarity.Phone.Controls;
 
 namespace TaiwanWeatherWP {
-    public partial class MainPage : PhoneApplicationPage {
+    public partial class MainPage : AnimatedBasePage {
         // Constructor
         public MainPage() {
             InitializeComponent();
@@ -21,6 +22,8 @@ namespace TaiwanWeatherWP {
             // Set the data context of the listbox control to the sample data
             DataContext = App.ViewModel;
             this.Loaded += new RoutedEventHandler(MainPage_Loaded);
+
+            AnimationContext = LayoutRoot;
         }
 
         // Handle selection changed on ListBox
