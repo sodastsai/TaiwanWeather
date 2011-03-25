@@ -29,11 +29,14 @@
         <!--ContentPanel - place additional content here-->
         <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
             <TextBlock x:Name="AboutInfo" FontSize="25.333" Margin="9,-6,0,6" Foreground="LightGray">NTU Mobile &#38; HCI Research Lab</TextBlock>
-            <TextBlock x:Name="AboutDetail" FontSize="20" Foreground="Silver" Margin="9,29,6,457" TextWrapping="Wrap">Mobile &#38; HCI Research Lab<LineBreak />
+            <TextBlock x:Name="AboutDetail" FontSize="20" Foreground="Silver" Margin="9,29,6,406" TextWrapping="Wrap">
+                國立台灣大學 資訊工程學系<LineBreak />
+                行動電話與人機介面實驗室<LineBreak />
+                <LineBreak/>Mobile &#38; HCI Research Lab<LineBreak />
                 Computer Science and Information Engeenering<LineBreak />
                 National Taiwan University
             </TextBlock>
-            <Button Content="visit website" Height="72" HorizontalAlignment="Left" Margin="0,114,0,0" Name="LabWebsite" VerticalAlignment="Top" Width="226" Click="LabWebSite_Click" />
+            <Button Content="visit website" Height="72" HorizontalAlignment="Left" Margin="0,207,0,0" Name="LabWebsite" VerticalAlignment="Top" Width="226" Click="LabWebSite_Click" />
         </Grid>
     </Grid>
 
