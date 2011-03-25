@@ -12,9 +12,12 @@ using System.Windows.Shapes;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Tasks;
 using Clarity.Phone.Controls;
+using Clarity.Phone.Controls.Animations;
 
 namespace TaiwanWeatherWP {
     public partial class MainPage : AnimatedBasePage {
+        // Note selected index for page transition
+        int selectedIndex = 0;
         // Constructor
         public MainPage() {
             InitializeComponent();
@@ -33,7 +36,7 @@ namespace TaiwanWeatherWP {
                 return;
 
             // Navigate to the new page
-            NavigationService.Navigate(new Uri("/DetailsPage.xaml?selectedItem=" + MainListBox.SelectedIndex, UriKind.Relative));
+            NavigationService.Navigate(new Uri("/CityDetail.xaml?selectedItem=" + MainListBox.SelectedIndex, UriKind.Relative));
 
             // Reset selected index to -1 (no selection)
             MainListBox.SelectedIndex = -1;
@@ -56,6 +59,18 @@ namespace TaiwanWeatherWP {
         // Show lab's page
         private void AboutUs_Pressed(object sender, EventArgs e) {
             NavigationService.Navigate(new Uri("/AboutUs.xaml", UriKind.Relative));
+        }
+
+        // Page Animation
+        protected override Clarity.Phone.Controls.Animations.AnimatorHelperBase GetAnimation(AnimationType animationType, Uri toOrFrom) {
+            if (toOrFrom != null) {
+                if (toOrFrom.OriginalString.Contains("CityDetail.xaml")) {
+                    if (animationType == AnimationType.NavigateForwardOut)
+                        selectedIndex = MainListBox.SelectedIndex;
+                    return GetContinuumAnimation(MainListBox.ItemContainerGenerator.ContainerFromIndex(selectedIndex) as FrameworkElement, animationType);
+                }
+            }
+            return base.GetAnimation(animationType, toOrFrom);
         }
     }
 }

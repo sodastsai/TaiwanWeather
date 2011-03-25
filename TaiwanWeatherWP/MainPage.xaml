@@ -47,7 +47,7 @@
         <shell:ApplicationBar IsVisible="True" IsMenuEnabled="True">
             <shell:ApplicationBar.MenuItems>
                 <shell:ApplicationBarMenuItem Text="{StaticResource CWB_Website}" Click="CWB_Pressed"/>
-                <shell:ApplicationBarMenuItem Text="{StaticResource AboutUs}" Click="AboutUs_Pressed"/>
+                <shell:ApplicationBarMenuItem x:Name="AboutUsMenu" Text="{StaticResource AboutUs}" Click="AboutUs_Pressed"/>
             </shell:ApplicationBar.MenuItems>
         </shell:ApplicationBar>
     </phone:PhoneApplicationPage.ApplicationBar>
