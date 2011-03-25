@@ -15,6 +15,9 @@ using Microsoft.Phone.Shell;
 
 namespace TaiwanWeatherWP {
     public partial class App : Application {
+        // Base URL of web service
+        public static String GAE_BaseURL = "http://ntu-taiwan-weather.appspot.com/json/";
+
         private static MainViewModel viewModel = null;
 
         /// <summary>

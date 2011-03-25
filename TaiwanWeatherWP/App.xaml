@@ -3,10 +3,16 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"       
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
-    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone">
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:clr="clr-namespace:System;assembly=mscorlib">
 
     <!--Application Resources-->
     <Application.Resources>
+        <!--String Resources-->
+        <clr:String x:Key="ApplicationName_Title">TAIWAN WEATHER</clr:String>
+        <clr:String x:Key="CityList">城市列表</clr:String>
+        <clr:String x:Key="CWB_Website">中央氣象局網站</clr:String>
+        <clr:String x:Key="AboutUs">關於我們</clr:String>
     </Application.Resources>
 
     <Application.ApplicationLifetimeObjects>
