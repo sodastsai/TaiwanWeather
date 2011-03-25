@@ -36,7 +36,9 @@ namespace TaiwanWeatherWP {
                 return;
 
             // Navigate to the new page
-            NavigationService.Navigate(new Uri("/CityDetail.xaml?selectedItem=" + MainListBox.SelectedIndex, UriKind.Relative));
+            String cityName = (MainListBox.SelectedItem as City).cityName;
+            String cityEnName = (MainListBox.SelectedItem as City).cityEnName;
+            NavigationService.Navigate(new Uri("/CityDetail.xaml?cityName=" + cityName + "&cityEnName=" + cityEnName, UriKind.Relative));
 
             // Reset selected index to -1 (no selection)
             MainListBox.SelectedIndex = -1;
