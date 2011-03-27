@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Windows;
@@ -13,9 +12,16 @@ using Microsoft.Phone.Controls;
 using Clarity.Phone.Controls;
 using Clarity.Phone.Controls.Animations;
 using System.Windows.Navigation;
+using System.IO;
+using System.Text;
+using System.Runtime.Serialization.Json;
+using TaiwanWeatherWP.ViewModels;
 
 namespace TaiwanWeatherWP {
     public partial class CityDetail : AnimatedBasePage {
+        CurrentInformation currentData;
+        ForecastInformation forecastData;
+
         public CityDetail() {
             InitializeComponent();
             AnimationContext = LayoutRoot;
@@ -28,21 +34,42 @@ namespace TaiwanWeatherWP {
                 PageTitle.Text = cityName;
             // Get URL
             String cityEnName;
-            if (NavigationContext.QueryString.TryGetValue("cityEnName", out cityEnName)) {
-                System.Diagnostics.Debug.WriteLine(cityEnName);
-            } else {
+            if (!NavigationContext.QueryString.TryGetValue("cityEnName", out cityEnName))
+                // No CityEnName
                 return;
-            }
 
+            // Prepare to load data
             String forecastURL = App.GAE_BaseURL + "forecast/" + cityEnName + "/";
             String currentURL = App.GAE_BaseURL + "current/" + cityEnName + "/";
-            System.Diagnostics.Debug.WriteLine(forecastURL);
-            System.Diagnostics.Debug.WriteLine(currentURL);
+
+            // Load Data
+            WebClient currentDataWebClient = new WebClient();
+            currentDataWebClient.OpenReadAsync(new Uri(currentURL));
+            currentDataWebClient.OpenReadCompleted += new OpenReadCompletedEventHandler(currentDataWebClient_OpenReadCompleted);
+
+            WebClient forecastDataWebClient = new WebClient();
+            forecastDataWebClient.OpenReadAsync(new Uri(forecastURL));
+            forecastDataWebClient.OpenReadCompleted += new OpenReadCompletedEventHandler(forecastDataWebClient_OpenReadCompleted);
         }
 
+        // Async Get data
+        private MemoryStream getMemoryStream(OpenReadCompletedEventArgs e) {
+            StreamReader reader = new StreamReader(e.Result);
+            String resultString = reader.ReadToEnd();
+            return new MemoryStream(Encoding.Unicode.GetBytes(resultString));
+        }
+        private void currentDataWebClient_OpenReadCompleted(object sender, OpenReadCompletedEventArgs e) {
+            DataContractJsonSerializer serializer = new DataContractJsonSerializer(typeof(CurrentInformation));
+            currentData = serializer.ReadObject(getMemoryStream(e)) as CurrentInformation;
+        }
+        private void forecastDataWebClient_OpenReadCompleted(object sender, OpenReadCompletedEventArgs e) {
+            DataContractJsonSerializer serialzer = new DataContractJsonSerializer(typeof(ForecastInformation));
+            forecastData = serialzer.ReadObject(getMemoryStream(e)) as ForecastInformation;
+        }
+        
+        // Animation
         protected override AnimatorHelperBase GetAnimation(AnimationType animationType, Uri toOrFrom) {
             return GetContinuumAnimation(ApplicationTitle, animationType);
-            //return base.GetAnimation(animationType, toOrFrom);
         }
     }
 }
