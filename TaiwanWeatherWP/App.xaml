@@ -13,6 +13,7 @@
         <clr:String x:Key="CityList">城市列表</clr:String>
         <clr:String x:Key="CWB_Website">中央氣象局網站</clr:String>
         <clr:String x:Key="AboutUs">關於我們</clr:String>
+        <clr:String x:Key="VisitWebsite">瀏覽網站</clr:String>
         <!--Animation-->
         <Style TargetType="phone:PhoneApplicationFrame" x:Key="CustomFrame">
             <Setter Property="IsTabStop" Value="False"/>

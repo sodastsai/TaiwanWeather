@@ -37,7 +37,7 @@
                 Computer Science and Information Engeenering<LineBreak />
                 National Taiwan University
             </TextBlock>
-            <Button Content="visit website" Height="72" HorizontalAlignment="Left" Margin="0,207,0,0" Name="LabWebsite" VerticalAlignment="Top" Width="226" Click="LabWebSite_Click" />
+            <Button Content="{StaticResource VisitWebsite}" Height="72" HorizontalAlignment="Left" Margin="0,207,0,0" Name="LabWebsite" VerticalAlignment="Top" Width="226" Click="LabWebSite_Click" />
         </Grid>
     </Grid>
 
