@@ -1,0 +1,377 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 45;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		14940862133B820E005C801F /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 14940860133B820E005C801F /* DetailViewController.m */; };
+		14940863133B820E005C801F /* DetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 14940861133B820E005C801F /* DetailViewController.xib */; };
+		1494088A133B8826005C801F /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 14940889133B8826005C801F /* JSONKit.m */; };
+		149408A1133B8844005C801F /* ASIAuthenticationDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = 1494088C133B8844005C801F /* ASIAuthenticationDialog.m */; };
+		149408A2133B8844005C801F /* ASIDataCompressor.m in Sources */ = {isa = PBXBuildFile; fileRef = 1494088F133B8844005C801F /* ASIDataCompressor.m */; };
+		149408A3133B8844005C801F /* ASIDataDecompressor.m in Sources */ = {isa = PBXBuildFile; fileRef = 14940891133B8844005C801F /* ASIDataDecompressor.m */; };
+		149408A4133B8844005C801F /* ASIDownloadCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 14940893133B8844005C801F /* ASIDownloadCache.m */; };
+		149408A5133B8844005C801F /* ASIFormDataRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 14940895133B8844005C801F /* ASIFormDataRequest.m */; };
+		149408A6133B8844005C801F /* ASIHTTPRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 14940897133B8844005C801F /* ASIHTTPRequest.m */; };
+		149408A7133B8844005C801F /* ASIInputStream.m in Sources */ = {isa = PBXBuildFile; fileRef = 1494089B133B8844005C801F /* ASIInputStream.m */; };
+		149408A8133B8844005C801F /* ASINetworkQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 1494089D133B8844005C801F /* ASINetworkQueue.m */; };
+		149408A9133B8844005C801F /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 149408A0133B8844005C801F /* Reachability.m */; };
+		149408BA133B8D01005C801F /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 149408B9133B8D01005C801F /* CFNetwork.framework */; };
+		149408BC133B8D0F005C801F /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 149408BB133B8D0F005C801F /* SystemConfiguration.framework */; };
+		149408BE133B8D19005C801F /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 149408BD133B8D19005C801F /* MobileCoreServices.framework */; };
+		149408C0133B8D2C005C801F /* libz.1.2.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 149408BF133B8D2C005C801F /* libz.1.2.3.dylib */; };
+		1D3623260D0F684500981E51 /* weatherAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* weatherAppDelegate.m */; };
+		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
+		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
+		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
+		2892E4100DC94CBA00A64D0F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2892E40F0DC94CBA00A64D0F /* CoreGraphics.framework */; };
+		28AD73600D9D9599002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD735F0D9D9599002E5188 /* MainWindow.xib */; };
+		28C286E10D94DF7D0034E888 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28C286E00D94DF7D0034E888 /* RootViewController.m */; };
+		28F335F11007B36200424DE2 /* RootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28F335F01007B36200424DE2 /* RootViewController.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		1494085F133B820E005C801F /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
+		14940860133B820E005C801F /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
+		14940861133B820E005C801F /* DetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailViewController.xib; sourceTree = "<group>"; };
+		14940888133B8826005C801F /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JSONKit.h; path = "../../asi and jsonkit example/JSONKit.h"; sourceTree = SOURCE_ROOT; };
+		14940889133B8826005C801F /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JSONKit.m; path = "../../asi and jsonkit example/JSONKit.m"; sourceTree = SOURCE_ROOT; };
+		1494088B133B8844005C801F /* ASIAuthenticationDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ASIAuthenticationDialog.h; path = "../../asi and jsonkit example/ASIAuthenticationDialog.h"; sourceTree = SOURCE_ROOT; };
+		1494088C133B8844005C801F /* ASIAuthenticationDialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ASIAuthenticationDialog.m; path = "../../asi and jsonkit example/ASIAuthenticationDialog.m"; sourceTree = SOURCE_ROOT; };
+		1494088D133B8844005C801F /* ASICacheDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ASICacheDelegate.h; path = "../../asi and jsonkit example/ASICacheDelegate.h"; sourceTree = SOURCE_ROOT; };
+		1494088E133B8844005C801F /* ASIDataCompressor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ASIDataCompressor.h; path = "../../asi and jsonkit example/ASIDataCompressor.h"; sourceTree = SOURCE_ROOT; };
+		1494088F133B8844005C801F /* ASIDataCompressor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ASIDataCompressor.m; path = "../../asi and jsonkit example/ASIDataCompressor.m"; sourceTree = SOURCE_ROOT; };
+		14940890133B8844005C801F /* ASIDataDecompressor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ASIDataDecompressor.h; path = "../../asi and jsonkit example/ASIDataDecompressor.h"; sourceTree = SOURCE_ROOT; };
+		14940891133B8844005C801F /* ASIDataDecompressor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ASIDataDecompressor.m; path = "../../asi and jsonkit example/ASIDataDecompressor.m"; sourceTree = SOURCE_ROOT; };
+		14940892133B8844005C801F /* ASIDownloadCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ASIDownloadCache.h; path = "../../asi and jsonkit example/ASIDownloadCache.h"; sourceTree = SOURCE_ROOT; };
+		14940893133B8844005C801F /* ASIDownloadCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ASIDownloadCache.m; path = "../../asi and jsonkit example/ASIDownloadCache.m"; sourceTree = SOURCE_ROOT; };
+		14940894133B8844005C801F /* ASIFormDataRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ASIFormDataRequest.h; path = "../../asi and jsonkit example/ASIFormDataRequest.h"; sourceTree = SOURCE_ROOT; };
+		14940895133B8844005C801F /* ASIFormDataRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ASIFormDataRequest.m; path = "../../asi and jsonkit example/ASIFormDataRequest.m"; sourceTree = SOURCE_ROOT; };
+		14940896133B8844005C801F /* ASIHTTPRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ASIHTTPRequest.h; path = "../../asi and jsonkit example/ASIHTTPRequest.h"; sourceTree = SOURCE_ROOT; };
+		14940897133B8844005C801F /* ASIHTTPRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ASIHTTPRequest.m; path = "../../asi and jsonkit example/ASIHTTPRequest.m"; sourceTree = SOURCE_ROOT; };
+		14940898133B8844005C801F /* ASIHTTPRequestConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ASIHTTPRequestConfig.h; path = "../../asi and jsonkit example/ASIHTTPRequestConfig.h"; sourceTree = SOURCE_ROOT; };
+		14940899133B8844005C801F /* ASIHTTPRequestDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ASIHTTPRequestDelegate.h; path = "../../asi and jsonkit example/ASIHTTPRequestDelegate.h"; sourceTree = SOURCE_ROOT; };
+		1494089A133B8844005C801F /* ASIInputStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ASIInputStream.h; path = "../../asi and jsonkit example/ASIInputStream.h"; sourceTree = SOURCE_ROOT; };
+		1494089B133B8844005C801F /* ASIInputStream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ASIInputStream.m; path = "../../asi and jsonkit example/ASIInputStream.m"; sourceTree = SOURCE_ROOT; };
+		1494089C133B8844005C801F /* ASINetworkQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ASINetworkQueue.h; path = "../../asi and jsonkit example/ASINetworkQueue.h"; sourceTree = SOURCE_ROOT; };
+		1494089D133B8844005C801F /* ASINetworkQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ASINetworkQueue.m; path = "../../asi and jsonkit example/ASINetworkQueue.m"; sourceTree = SOURCE_ROOT; };
+		1494089E133B8844005C801F /* ASIProgressDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ASIProgressDelegate.h; path = "../../asi and jsonkit example/ASIProgressDelegate.h"; sourceTree = SOURCE_ROOT; };
+		1494089F133B8844005C801F /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Reachability.h; path = "../../asi and jsonkit example/Reachability.h"; sourceTree = SOURCE_ROOT; };
+		149408A0133B8844005C801F /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Reachability.m; path = "../../asi and jsonkit example/Reachability.m"; sourceTree = SOURCE_ROOT; };
+		149408B9133B8D01005C801F /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		149408BB133B8D0F005C801F /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		149408BD133B8D19005C801F /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		149408BF133B8D2C005C801F /* libz.1.2.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.2.3.dylib; path = usr/lib/libz.1.2.3.dylib; sourceTree = SDKROOT; };
+		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		1D3623240D0F684500981E51 /* weatherAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = weatherAppDelegate.h; sourceTree = "<group>"; };
+		1D3623250D0F684500981E51 /* weatherAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = weatherAppDelegate.m; sourceTree = "<group>"; };
+		1D6058910D05DD3D006BFB54 /* weather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = weather.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		2892E40F0DC94CBA00A64D0F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		28A0AAE50D9B0CCF005BE974 /* weather_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = weather_Prefix.pch; sourceTree = "<group>"; };
+		28AD735F0D9D9599002E5188 /* MainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
+		28C286DF0D94DF7D0034E888 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
+		28C286E00D94DF7D0034E888 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
+		28F335F01007B36200424DE2 /* RootViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RootViewController.xib; sourceTree = "<group>"; };
+		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		8D1107310486CEB800E47090 /* weather-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "weather-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		1D60588F0D05DD3D006BFB54 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */,
+				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
+				2892E4100DC94CBA00A64D0F /* CoreGraphics.framework in Frameworks */,
+				149408BA133B8D01005C801F /* CFNetwork.framework in Frameworks */,
+				149408BC133B8D0F005C801F /* SystemConfiguration.framework in Frameworks */,
+				149408BE133B8D19005C801F /* MobileCoreServices.framework in Frameworks */,
+				149408C0133B8D2C005C801F /* libz.1.2.3.dylib in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		080E96DDFE201D6D7F000001 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				28C286DF0D94DF7D0034E888 /* RootViewController.h */,
+				28C286E00D94DF7D0034E888 /* RootViewController.m */,
+				1494085F133B820E005C801F /* DetailViewController.h */,
+				14940860133B820E005C801F /* DetailViewController.m */,
+				1D3623240D0F684500981E51 /* weatherAppDelegate.h */,
+				1D3623250D0F684500981E51 /* weatherAppDelegate.m */,
+				14940861133B820E005C801F /* DetailViewController.xib */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		14940880133B87EB005C801F /* extras_API */ = {
+			isa = PBXGroup;
+			children = (
+				14940882133B8806005C801F /* ASI */,
+				14940881133B87FB005C801F /* JSON */,
+			);
+			name = extras_API;
+			sourceTree = "<group>";
+		};
+		14940881133B87FB005C801F /* JSON */ = {
+			isa = PBXGroup;
+			children = (
+				14940888133B8826005C801F /* JSONKit.h */,
+				14940889133B8826005C801F /* JSONKit.m */,
+			);
+			name = JSON;
+			sourceTree = "<group>";
+		};
+		14940882133B8806005C801F /* ASI */ = {
+			isa = PBXGroup;
+			children = (
+				1494088B133B8844005C801F /* ASIAuthenticationDialog.h */,
+				1494088C133B8844005C801F /* ASIAuthenticationDialog.m */,
+				1494088D133B8844005C801F /* ASICacheDelegate.h */,
+				1494088E133B8844005C801F /* ASIDataCompressor.h */,
+				1494088F133B8844005C801F /* ASIDataCompressor.m */,
+				14940890133B8844005C801F /* ASIDataDecompressor.h */,
+				14940891133B8844005C801F /* ASIDataDecompressor.m */,
+				14940892133B8844005C801F /* ASIDownloadCache.h */,
+				14940893133B8844005C801F /* ASIDownloadCache.m */,
+				14940894133B8844005C801F /* ASIFormDataRequest.h */,
+				14940895133B8844005C801F /* ASIFormDataRequest.m */,
+				14940896133B8844005C801F /* ASIHTTPRequest.h */,
+				14940897133B8844005C801F /* ASIHTTPRequest.m */,
+				14940898133B8844005C801F /* ASIHTTPRequestConfig.h */,
+				14940899133B8844005C801F /* ASIHTTPRequestDelegate.h */,
+				1494089A133B8844005C801F /* ASIInputStream.h */,
+				1494089B133B8844005C801F /* ASIInputStream.m */,
+				1494089C133B8844005C801F /* ASINetworkQueue.h */,
+				1494089D133B8844005C801F /* ASINetworkQueue.m */,
+				1494089E133B8844005C801F /* ASIProgressDelegate.h */,
+				1494089F133B8844005C801F /* Reachability.h */,
+				149408A0133B8844005C801F /* Reachability.m */,
+			);
+			name = ASI;
+			sourceTree = "<group>";
+		};
+		19C28FACFE9D520D11CA2CBB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1D6058910D05DD3D006BFB54 /* weather.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
+			isa = PBXGroup;
+			children = (
+				14940880133B87EB005C801F /* extras_API */,
+				080E96DDFE201D6D7F000001 /* Classes */,
+				29B97315FDCFA39411CA2CEA /* Other Sources */,
+				29B97317FDCFA39411CA2CEA /* Resources */,
+				29B97323FDCFA39411CA2CEA /* Frameworks */,
+				19C28FACFE9D520D11CA2CBB /* Products */,
+				149408B9133B8D01005C801F /* CFNetwork.framework */,
+				149408BB133B8D0F005C801F /* SystemConfiguration.framework */,
+				149408BD133B8D19005C801F /* MobileCoreServices.framework */,
+				149408BF133B8D2C005C801F /* libz.1.2.3.dylib */,
+			);
+			name = CustomTemplate;
+			sourceTree = "<group>";
+		};
+		29B97315FDCFA39411CA2CEA /* Other Sources */ = {
+			isa = PBXGroup;
+			children = (
+				28A0AAE50D9B0CCF005BE974 /* weather_Prefix.pch */,
+				29B97316FDCFA39411CA2CEA /* main.m */,
+			);
+			name = "Other Sources";
+			sourceTree = "<group>";
+		};
+		29B97317FDCFA39411CA2CEA /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				28F335F01007B36200424DE2 /* RootViewController.xib */,
+				28AD735F0D9D9599002E5188 /* MainWindow.xib */,
+				8D1107310486CEB800E47090 /* weather-Info.plist */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
+				1D30AB110D05D00D00671497 /* Foundation.framework */,
+				2892E40F0DC94CBA00A64D0F /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		1D6058900D05DD3D006BFB54 /* weather */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "weather" */;
+			buildPhases = (
+				1D60588D0D05DD3D006BFB54 /* Resources */,
+				1D60588E0D05DD3D006BFB54 /* Sources */,
+				1D60588F0D05DD3D006BFB54 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = weather;
+			productName = weather;
+			productReference = 1D6058910D05DD3D006BFB54 /* weather.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		29B97313FDCFA39411CA2CEA /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "weather" */;
+			compatibilityVersion = "Xcode 3.1";
+			developmentRegion = English;
+			hasScannedForEncodings = 1;
+			knownRegions = (
+				English,
+				Japanese,
+				French,
+				German,
+				en,
+			);
+			mainGroup = 29B97314FDCFA39411CA2CEA /* CustomTemplate */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				1D6058900D05DD3D006BFB54 /* weather */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		1D60588D0D05DD3D006BFB54 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				28AD73600D9D9599002E5188 /* MainWindow.xib in Resources */,
+				28F335F11007B36200424DE2 /* RootViewController.xib in Resources */,
+				14940863133B820E005C801F /* DetailViewController.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1D60588E0D05DD3D006BFB54 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
+				1D3623260D0F684500981E51 /* weatherAppDelegate.m in Sources */,
+				28C286E10D94DF7D0034E888 /* RootViewController.m in Sources */,
+				14940862133B820E005C801F /* DetailViewController.m in Sources */,
+				1494088A133B8826005C801F /* JSONKit.m in Sources */,
+				149408A1133B8844005C801F /* ASIAuthenticationDialog.m in Sources */,
+				149408A2133B8844005C801F /* ASIDataCompressor.m in Sources */,
+				149408A3133B8844005C801F /* ASIDataDecompressor.m in Sources */,
+				149408A4133B8844005C801F /* ASIDownloadCache.m in Sources */,
+				149408A5133B8844005C801F /* ASIFormDataRequest.m in Sources */,
+				149408A6133B8844005C801F /* ASIHTTPRequest.m in Sources */,
+				149408A7133B8844005C801F /* ASIInputStream.m in Sources */,
+				149408A8133B8844005C801F /* ASINetworkQueue.m in Sources */,
+				149408A9133B8844005C801F /* Reachability.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		1D6058940D05DD3E006BFB54 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = weather_Prefix.pch;
+				INFOPLIST_FILE = "weather-Info.plist";
+				PRODUCT_NAME = weather;
+			};
+			name = Debug;
+		};
+		1D6058950D05DD3E006BFB54 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = weather_Prefix.pch;
+				INFOPLIST_FILE = "weather-Info.plist";
+				PRODUCT_NAME = weather;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		C01FCF4F08A954540054247B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				PREBINDING = NO;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		C01FCF5008A954540054247B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				PREBINDING = NO;
+				SDKROOT = iphoneos;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "weather" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1D6058940D05DD3E006BFB54 /* Debug */,
+				1D6058950D05DD3E006BFB54 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C01FCF4E08A954540054247B /* Build configuration list for PBXProject "weather" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C01FCF4F08A954540054247B /* Debug */,
+				C01FCF5008A954540054247B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 29B97313FDCFA39411CA2CEA /* Project object */;
+}
