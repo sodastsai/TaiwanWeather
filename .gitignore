@@ -4,3 +4,4 @@
 *.g.i.cs
 Bin/
 obj/
+build/
