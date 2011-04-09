@@ -35,7 +35,7 @@ namespace TaiwanWeatherWP {
             // Get URL
             String cityEnName;
             if (!NavigationContext.QueryString.TryGetValue("cityEnName", out cityEnName))
-                // No CityEnName
+                // TODO: No CityEnName
                 return;
 
             // Prepare to load data
@@ -61,10 +61,12 @@ namespace TaiwanWeatherWP {
         private void currentDataWebClient_OpenReadCompleted(object sender, OpenReadCompletedEventArgs e) {
             DataContractJsonSerializer serializer = new DataContractJsonSerializer(typeof(CurrentInformation));
             currentData = serializer.ReadObject(getMemoryStream(e)) as CurrentInformation;
+            // TODO: show fetched data
         }
         private void forecastDataWebClient_OpenReadCompleted(object sender, OpenReadCompletedEventArgs e) {
             DataContractJsonSerializer serialzer = new DataContractJsonSerializer(typeof(ForecastInformation));
             forecastData = serialzer.ReadObject(getMemoryStream(e)) as ForecastInformation;
+            // TODO: show fetched data
         }
         
         // Animation
